@@ -187,6 +187,57 @@ regresaObservable(): Observable<number>{
   }
 
 
+### Map
+Nos podemos imaginar un aspersor de agua, donde nos llega agua por un lago pero podemos
+manejar como querremos que salga el agua, como un chorro, como aspersor, más presión, menos presión.
+Pues eso es un operador map, no es mas que transformar la información que ya tenemos.
+Es la misma información que yo estoy recibiendo pero expresada de otra manera.
+
+Para usarlo, tenemos que importarlo de rxjs/operators
+**import { map } from 'rxjs/operators';**
+
+Nuestro observable está devolviendo un objeto llamado salida, 
+pero a nosotros no nos interesa el objeto salida, si no el valor que contiene
+dentro, es por ello que lo pasamos por un pipe usando el map.
+El operador map, nos permite transformar la información.
+
+    regresaObservable(): Observable<any>{
+    
+    return new Observable( (observer: Subscriber<any>) => {
+
+      let contador = 0;
+
+      const intervalo = setInterval(
+        () => {
+
+          contador += 1;
+
+          const salida = {
+            valor: contador
+          };
+
+          // Vamos mandándole datos.
+          observer.next(salida);
+
+          if(contador == 3){
+            // Así paramos el intervalo.
+
+            clearInterval(intervalo);
+            // Así se para la subscripción para dejar de escuchar.
+            observer.complete();
+          }
+
+          // if(contador == 2){
+          //   //clearInterval(intervalo);
+          //   observer.error('Auxilio!')
+          // }
+        }, 1000)
+      }).pipe(
+        // map(resp => { return resp.valor})
+        map(resp => resp.valor)
+      )
+      }
+
 
 
 
