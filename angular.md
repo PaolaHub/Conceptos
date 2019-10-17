@@ -53,8 +53,73 @@ Y las rutas secundarias se marcan con forChild:
  
  > (Ver más en Curso Angular Avanzado: Fernando Herrera Section 3 y 4)
  
+### Promesas
+
+Las promesas llevan una función de callback, con dos parámetros:
+1. Resolver, para cuando la promesa haya terminado.
+2. Reject, cuando se produce algún error.
+
+Declaración de un promesa:
  
- Observables
+      let promesa = new Promise((resolve, reject) => {
+
+        let contador = 0;
+        let intervalo = setInterval(()=>{
+
+          contador += 1;
+          console.log(contador);
+
+          if(contador === 3){
+
+            resolve(true);
+            clearInterval(intervalo);
+          }
+          
+        }, 1000)
+      });
+      
+Llamada a una promesa:
+1. Then: Si la promesa ha terminado bien y se llamo al método resolver.
+2. Catch: Si la promesa acabó mál y se llamó al método reject.
+
+    promesa.then(
+      mensaje => console.log('Termino!', mensaje)
+    )
+    .catch(
+      error => console.log('Error en la promesa', error));
+      
+Normalmente, las promesas van definidas en una función:
+
+    contarTres(): Promise<boolean>{
+    
+    return new Promise((resolve, reject) => {
+
+      let contador = 0;
+      let intervalo = setInterval(()=>{
+
+        contador += 1;
+        console.log(contador);
+
+        if(contador === 3){
+
+          resolve(true);
+          clearInterval(intervalo);
+
+        }
+      }, 1000)
+    });
+    }
+    
+Y se les llama así:
+    
+    this.contarTres().then(
+      mensaje => console.log('Termino!', mensaje)
+    )
+    .catch(
+      error => console.log('Error en la promesa', error));
+ 
+### Observables
+
 Los Observable no están definidos en el ECMAScript6, por lo tanto hay que importarlos.
 **import { Observable } from 'rxjs';** Reactiv extensions.
 
@@ -107,13 +172,13 @@ Para que funcione, tiene que ser llamado dentro de un pipe, como en el ejempo de
       retry(2)
     )
     .subscribe(
-      // Cuando se llama a un next para mandale información mientras escucha.
-      numero => console.log("Subs ", numero),
-      // Cuando hay un error.
-      error => console.error('Error en el obs', error),
-      // Cuando el observador termino.
-      () => console.log('El observador termino')
-      );
+        // Cuando se llama a un next para mandale información mientras escucha.
+        numero => console.log("Subs ", numero),
+        // Cuando hay un error.
+        error => console.error('Error en el obs', error),
+        // Cuando el observador termino.
+        () => console.log('El observador termino')
+     );
 
 
 
