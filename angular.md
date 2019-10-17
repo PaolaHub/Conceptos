@@ -187,7 +187,7 @@ regresaObservable(): Observable<number>{
   }
 
 
-### Map
+### Operador Map
 Nos podemos imaginar un aspersor de agua, donde nos llega agua por un lago pero podemos
 manejar como querremos que salga el agua, como un chorro, como aspersor, más presión, menos presión.
 Pues eso es un operador map, no es mas que transformar la información que ya tenemos.
@@ -239,8 +239,64 @@ El operador map, nos permite transformar la información.
       }
 
 
+### Operador Filter
 
+El operador filter es como un interruptor, va a filtrar información.
+Va a devolver un true o un false, True deja pasar la información, False ignora la información.
+Tiene dos argumentos que son el propio valor que le llega del observable y el index, que
+son las veces que se ha llamado al operador.
+En este ejemplo, como nuestro observable nos está devolviendo numeros,
+hemos echo un filtro para que solo nos devuelva los números impares:
 
+    regresaObservable(): Observable<any>{
+    
+      return new Observable( (observer: Subscriber<any>) => {
+
+      let contador = 0;
+
+      const intervalo = setInterval(
+        () => {
+
+          contador += 1;
+
+          const salida = {
+            valor: contador
+          };
+
+          // Vamos mandándole datos.
+          observer.next(salida);
+
+          if(contador == 3){
+            // Así paramos el intervalo.
+
+            clearInterval(intervalo);
+            // Así se para la subscripción para dejar de escuchar.
+            observer.complete();
+          }
+
+          // if(contador == 2){
+          //   //clearInterval(intervalo);
+          //   observer.error('Auxilio!')
+          // }
+        }, 1000)
+      }).pipe(
+        // map(resp => { return resp.valor})
+        map(resp => resp.valor),
+        filter( (valor, index) => {
+          
+          if(valor % 2 === 1) {
+            return true;
+          }
+          else  {
+            return false;
+          }
+        })
+      )
+      }
+      
+Más sobre los diferentes operadores disponibles de RXJS - Operators
+
+http://reactivex.io/documentation/operators.html
 
 
 
