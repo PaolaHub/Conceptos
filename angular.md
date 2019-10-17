@@ -180,7 +180,11 @@ Para que funcione, tiene que ser llamado dentro de un pipe, como en el ejempo de
         () => console.log('El observador termino')
      );
 
+Lo mismo que con las Promesas, normalmente los Observables, están definidos dentro de una funcion:
 
+regresaObservable(): Observable<number>{
+  return ...Observable...
+  }
 
 
 
