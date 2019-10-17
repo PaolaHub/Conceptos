@@ -52,6 +52,69 @@ Y las rutas secundarias se marcan con forChild:
  - export const PAGES_ROUTES = RouterModule.forChild(pagesRoutes);
  
  > (Ver más en Curso Angular Avanzado: Fernando Herrera Section 3 y 4)
+ 
+ 
+ Observables
+Los Observable no están definidos en el ECMAScript6, por lo tanto hay que importarlos.
+**import { Observable } from 'rxjs';** Reactiv extensions.
+
+Los Observable son como las promesas, pero con más funcionalidades:
+No tienen un método resolve y reject como las promesas, si no solo un parámetro observables.
+El parámetro observable tiene varias funciones, una de ellas es el:
+* **observable.next()**. Esta función manda parámetros mientras esté subscrito. (**observable.next(contador)**).
+* **observable.complete()**. Para decirle al observador que deje de escuchar (que no siga subscrito que ya ha terminado).
+Esta función no manda ningún parámetro, solo avisa que ya ha terminado su propósito.
+
+Declaración de un observable:
+ 
+     let obs = new Observable( observable => {
+
+        let contador = 0;
+
+        let intervalo = setInterval(
+          () => {
+
+            contador += 1;
+            // Vamos mandándole datos.
+            observable.next(contador);
+            if(contador == 3){
+              // Así paramos el intervalo.
+              clearInterval(intervalo);
+              // Así se para la subscripción para dejar de escuchar.
+              observable.complete();
+            }
+
+            if(contador == 2){
+              //clearInterval(intervalo);
+              observable.error('Auxilio!')
+            }
+          }, 1000)
+
+    });
+    
+Subscription a un observable.
+Los observables tienen tres callback:
+1. Para ir mandado información
+2. Por si hay algún error, en este caso la subscripción se para.
+3. Para avisar que ya ha terminado.
+
+Si se produce algún error, y queremos que se subscriba otra vez,
+tenemos un método que se llama **retry**. Este método tiene que importarse de **import {retry} from rxjs/operators**.
+Para que funcione, tiene que ser llamado dentro de un pipe, como en el ejempo de abajo.
+
+    // Los observables tienen tres callback !
+    obs.pipe(
+      retry(2)
+    )
+    .subscribe(
+      // Cuando se llama a un next para mandale información mientras escucha.
+      numero => console.log("Subs ", numero),
+      // Cuando hay un error.
+      error => console.error('Error en el obs', error),
+      // Cuando el observador termino.
+      () => console.log('El observador termino')
+      );
+
 
 
 
