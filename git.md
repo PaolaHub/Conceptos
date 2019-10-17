@@ -70,6 +70,9 @@ HEAD => ÚLTIMO COMMIT EN EL BRACH ACTUAL
 * **git config --global alias.lg "log --oneline --decorate --all --graph"**. Crea el alias "lg". Ahora podemos llamar comando git lg.
 * **git config --global alias.s "status -s -b"**. Crea el alias "s". Comando: git s.
 
+Ver alias:
+* **git config --global -e**.
+
 
 
 
