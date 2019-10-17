@@ -298,5 +298,37 @@ Más sobre los diferentes operadores disponibles de RXJS - Operators
 
 http://reactivex.io/documentation/operators.html
 
+### Llamar al unsubscribe
+
+Para parar a los observables cuando se sale del componente,
+podemos llamar a la funcion unsubscribe cuando el componente se destruye:
+Para eso tenemos que importar el **import { OnDestroy } from '@angular/core'**.
+
+Dentro de la clase vamos a crear una variable Subscription,
+y se la vamos a asignar a la llamada al Observable.
+
+Luego vamos a llamar al unsubscribe en el OnDestroy.
+
+    export class RxjsComponent implements OnInit, OnDestroy {
+     
+     subscription: Subscription;
+     
+     constructor() {
+
+      this.subscription = this.regresaObservable()
+      .subscribe(
+        numero => console.log("Subs ", numero),
+        error => console.error('Error en el obs', error),
+        () => console.log('El observador termino')
+      );
+     }
+    
+     ngOnDestroy() {
+      console.log("La página se va a cerrar");
+      this.subscription.unsubscribe();
+     }
+    }
+ 
+
 
 
