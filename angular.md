@@ -330,5 +330,54 @@ Luego vamos a llamar al unsubscribe en el OnDestroy.
     }
  
 
+### Usando Observable para obtener la data del router.
 
+Al router puede configurarsele unos datos, los que querramos.
+
+**{ path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard'} },**
+
+El objeto router, tiene un observable: **events**. Para saber lo que va pasando por las rutas.
+Si hacemos un console.log(events) de los datos que nos proporciona el observable,
+tenemos el **data** que hemos definido en las routes.
+Con los operadores Filter y Maps sacamos esa **data** y nos subscribimos al objeto.
+El objecto que nos llega del observable al subscribirnos, será exactamente la información **data**,
+que estamos buscando.
+
+        import { Component, OnInit } from '@angular/core';
+        import { Router, ActivationEnd } from '@angular/router';
+        import { filter, map } from 'rxjs/operators';
+
+        @Component({
+          selector: 'app-breadcrums',
+          templateUrl: './breadcrums.component.html',
+          styles: []
+        })
+        export class BreadcrumsComponent implements OnInit {
+
+        titulo: string;
+
+          constructor(private router: Router) { 
+
+            this.getDataRouter()
+            .subscribe(
+              data => {
+                this.titulo = data.titulo;
+
+              }
+            )
+          }
+
+          ngOnInit() {
+          }
+
+          getDataRouter()
+          {
+            return this.router.events.pipe(
+                filter(evento => evento instanceof ActivationEnd),
+                filter((evento: ActivationEnd) => evento.snapshot.firstChild === null),
+                map( (evento:ActivationEnd) => evento.snapshot.data)
+            );
+          }
+
+        }
 
