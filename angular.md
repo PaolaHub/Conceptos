@@ -381,3 +381,33 @@ que estamos buscando.
 
         }
 
+
+### 82. MetaTags, Título y Página actual
+
+Hay dos injectable definidos en Angular,
+que nos permiten cambiar el titulo de la página en la pestaña del navegador
+y otra que nos permite crear meta tags, para ayudar al navegador en sus busquedas.
+
+Son dos servicios injectables: Title y Meta
+Cada vez que se produce un cambio en la ruta, está cambiando el nombre de la pestaña
+y creando un metaTag con el data del observable.
+
+    constructor(private router: Router,
+      private title: Title,
+      private meta: Meta) { 
+
+      this.getDataRouter()
+      .subscribe(
+        data => {
+          this.titulo = data.titulo;
+          this.title.setTitle(this.titulo);
+
+          const metaTag: MetaDefinition = {
+              name: 'description',
+              content: this.titulo
+          };
+
+          this.meta.updateTag(metaTag);
+        }
+      )
+    }
