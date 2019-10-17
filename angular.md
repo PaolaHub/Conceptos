@@ -121,7 +121,7 @@ Y se les llama así:
 ### Observables
 
 Los Observable no están definidos en el ECMAScript6, por lo tanto hay que importarlos.
-**import { Observable } from 'rxjs';** Reactiv extensions.
+**import { Observable, Subscriber } from 'rxjs';** Reactiv extensions.
 
 Los Observable son como las promesas, pero con más funcionalidades:
 No tienen un método resolve y reject como las promesas, si no solo un parámetro observables.
@@ -132,7 +132,7 @@ Esta función no manda ningún parámetro, solo avisa que ya ha terminado su pro
 
 Declaración de un observable:
  
-     let obs = new Observable( observable => {
+     let obs = new Observable( (observer: Subscriber<any>) => {
 
         let contador = 0;
 
