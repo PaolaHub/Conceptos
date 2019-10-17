@@ -1,29 +1,29 @@
 # GIT and GItHub
 
 ### Version
-**git --version**
+* **git --version**
 
 ### Buscar ayuda
-**git help**
+* **git help**
 
 #### Más informacion sobre un comando en particular:
-**git help commit**
+* **git help commit**
 
 ### Configuración en GIT
-**git config --global user.name "Paola"**
+* **git config --global user.name "Paola"**
 
-**git config --global user.email "paola.tapia1@gmail.com"**
+* **git config --global user.email "paola.tapia1@gmail.com"**
 
 Git trabaja mucho con la confianza
 
 #### Ver configuracion
-**git config --global -e**
+* **git config --global -e**
 
 Para salir :q (enter) => Sin salvar
 Para salir y guradar :wq (enter) => Salvando
 
 ### Para iniciar git en nuestro repositorio
-**git init**
+* **git init**
 
 ### Ver el estado el repositorio, añadir y hacer un commit
 
