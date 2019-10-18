@@ -1,6 +1,6 @@
 # Backend-server desde 0
 
-#### Creando el proyecto NODE e instalando EXPRESS
+### Creando el proyecto NODE e instalando EXPRESS
 
 1. Creamos una carpeta y nos dirigimos a ella en la termina.
 2. Ejecutamos el commando **npm init** para iniciar node. **NODE es simplemente JavaScript corriendo del lado del servidor**.
@@ -8,7 +8,7 @@
   * Para descargarlo, ejecutamos el comando **npm install express --save** ( el --save es para indicar que esa librería es necesaria para que funcione nuestro servidor en nuestro proyecto de NODE).
   Si nos fijamos instala en la carpeta los módulos de NODE y todo lo necesario para que funcione Express.
   
-#### Inicializando el servidor
+### Inicializando el servidor
 
 1. Creamos un archivo **app.js** en el directorio raiz. Ese archivo es el punto de entrada de nuestra aplicación
 y va a contener todo el código JavaScript que va a inicializar nuestro servidor Express, entre otras cosas
@@ -32,7 +32,7 @@ como la base de datos, autentificaciones, rutas, etc...
 4. Ir al navegador y navegar a localhost:3000. Vemos que nos aparece un Cannot GET, y eso es por que no existe ninguna ruta que
 coincida con esto, pero el servidor ya está corriendo.
 
-#### Para cambiar los colores del texto en la consola
+### Para cambiar los colores del texto en la consola
 
 console.log('Express server puerto 3000: **\x1b[5m%s\x1b[0m**', 'online');
 
@@ -85,7 +85,7 @@ console.log('Express server puerto 3000: **\x1b[5m%s\x1b[0m**', 'online');
        BgWhite = "\x1b[47m"
 
 
-#### Crear la primera ruta
+### Crear la primera ruta
 
 Creamos la primera ruta en el app.js
 
@@ -103,8 +103,22 @@ Con el backend siempre es así. Ahora vemos que nos devuelve un JSON.
 Mientras el servidor está corriendo, vamos a introducir **localhost:3000** como petición GET, en el 
 postman. De esta manera verificamos que todas las peticiones se están haciendo correctamente.
 
-##### NODEMON - Monitoriza el backend
+### NODEMON - Monitoriza el backend
 Para no tener que estar bajando y subiendo el servidor a cada cambio, existe una librería NODEMON.
 Vamos a instalarla:
 De forma global: **npm install -g nodemon** (va a pedir ser el admintrador)
 Solo para el proyecto de desarrollo: **npm install --save-dev nodemon**
+
+La instalamos de la segunda forma.
+
+####¿Como la hechamos a correr?
+
+Vamos al package.json y en el scripts escribimos el siguiente código:
+
+    "scripts": {
+      "start": "nodemon app.js"
+    },
+    
+ Esto hace que se llame al nodemon y le definimos el archivo de inicialización del servidor.
+ 
+ Ahora vamos a la terminal y en vez de escrbir **node app**, escribimos **npm start** (que sería lo mismo que escribir nodemon app.js) 
