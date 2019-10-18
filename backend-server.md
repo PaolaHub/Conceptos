@@ -123,3 +123,17 @@ Esto hace que se llame al nodemon definiendole el archivo de inicialización del
 Ahora vamos a la terminal y en vez de escrbir **node app**, escribimos **npm start** (que sería lo mismo que escribir nodemon app.js) 
 Y vemos como se está monitorizando. Para probarlo solo tenemos que hacer algún cambio en el código.
 
+### MongoDB
+
+Vamos a instalar MongoDB en el ordenador (C:\Program Files\MongoDB\Server\4.2\bin). Hay que definirle una carpeta donde se colocarán nuestras bases de datos (C:\data\db).
+Una vez instalado, tenemos que correrlo pinchando en el archivo mongod.exe (en la carpeta de instalación).
+Se nos abrira una ventana como una terminal, y esta ventana, no podemos cerrarla, si no, se nos cerrará nuestra
+conexión con la base de datos. Siempre hay que dejarla correr.
+En la terminal, nos aparacerá el puerta que está usando la base de datos.
+
+#### Robot 3T
+MongoDB puede se usada mediante comando, pero un forma más cómodo es usar Robot 3T.
+Lo instalamos e iniciamos una conexión por defecto al puerto que nos indica en la terminal.
+
+### Conexión entre Mongo y Node
+
