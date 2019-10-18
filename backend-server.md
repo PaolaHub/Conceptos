@@ -96,8 +96,8 @@ Creamos la primera ruta en el app.js
         })
     });
     
-Para ver si está funcionando, hay que bajar el servicio de la terminal y volver a levantarlo.
-Con el backend siempre es así. Ahora vemos que nos devuelve un JSON.
+Para ver si está funcionando, hay que bajar el servidor en la terminal y volver a levantarlo.
+Ahora vemos que nos devuelve un JSON.
 
 ##### Vamos a probar con Postman
 Mientras el servidor está corriendo, vamos a introducir **localhost:3000** como petición GET, en el 
@@ -113,12 +113,13 @@ La instalamos de la segunda forma.
 
 ####¿Como la hechamos a correr?
 
-Vamos al package.json y en el scripts escribimos el siguiente código:
+Vamos en los scripts del package.json escribimos el siguiente código:
 
     "scripts": {
       "start": "nodemon app.js"
     },
     
- Esto hace que se llame al nodemon y le definimos el archivo de inicialización del servidor.
- 
- Ahora vamos a la terminal y en vez de escrbir **node app**, escribimos **npm start** (que sería lo mismo que escribir nodemon app.js) 
+Esto hace que se llame al nodemon definiendole el archivo de inicialización del servidor, cuando escribimos "start".
+Ahora vamos a la terminal y en vez de escrbir **node app**, escribimos **npm start** (que sería lo mismo que escribir nodemon app.js) 
+Y vemos como se está monitorizando. Para probarlo solo tenemos que hacer algún cambio en el código.
+
