@@ -2,13 +2,11 @@
 
 #### Creando el proyecto NODE e instalando EXPRESS
 
-1. Creamos una carpeta
-2. Nos vamos a la terminal y ejecutamos el commando **npm init** para iniciar node.
+1. Creamos una carpeta y nos dirigimos a ella en la termina.
+2. Ejecutamos el commando **npm init** para iniciar node. **NODE es simplemente JavaScript corriendo del lado del servidor**.
 3. Luego vamos a descargarnos el servidor **expressjs.com** porque es muy fácil hacer peticiones o servicios REST en el lado de NODE.
-**NODE es simplemente JavaScript corriendo del lado del servidor**.
-  * Ejecutamos el comando **npm install express --save** ( el --save es para indicar que esa librería es necesaria para que funcione 
-nuestro servidor en nuestro proyecto de NODE).
-  Si nos fijamos instala en la carpeta los módulos de NODE y todo lo necesario para que funcione en Express.
+  * Para descargarlo, ejecutamos el comando **npm install express --save** ( el --save es para indicar que esa librería es necesaria para que funcione nuestro servidor en nuestro proyecto de NODE).
+  Si nos fijamos instala en la carpeta los módulos de NODE y todo lo necesario para que funcione Express.
   
 #### Inicializando el servidor
 
@@ -16,7 +14,7 @@ nuestro servidor en nuestro proyecto de NODE).
 y va a contener todo el código JavaScript que va a inicializar nuestro servidor Express, entre otras cosas
 como la base de datos, autentificaciones, rutas, etc...
 
-2. Escribimos el siguiente código.
+2. Escribimos el siguiente código, para inicializar el servidor Express.
 
             // Requires
             var express = require('express'); // Cargamos la librería de Espress
@@ -29,5 +27,9 @@ como la base de datos, autentificaciones, rutas, etc...
             app.listen(3000, () => {
                 console.log("Express server puerto 3000 online");
             });
+            
+3. Para ver si funciona, nos vamos a la terminal y ejecutamos el comando **node app**.
+4. Ir al navegador y navegar a localhost:3000. Vemos que nos aparece un Cannot GET, y eso es por que no existe ninguna ruta que
+coincida con esto, pero el servidor ya está corriendo.
 
 
