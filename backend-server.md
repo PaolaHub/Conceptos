@@ -137,3 +137,5 @@ Lo instalamos e iniciamos una conexión por defecto al puerto que nos indica en 
 
 ### Conexión entre Mongo y Node
 
+Vamos a buscar **Mongoose**. Es un ODM que nos va ayudar a interactuar facilmente con la base de datos del lado de Node.
+
