@@ -138,4 +138,20 @@ Lo instalamos e iniciamos una conexión por defecto al puerto que nos indica en 
 ### Conexión entre Mongo y Node
 
 Vamos a buscar **Mongoose**. Es un ODM que nos va ayudar a interactuar facilmente con la base de datos del lado de Node.
+Lo instalamos **npm install mongoose --save** (usamos el save porque es una dependencia obligatoria)
+
+#### ¿Cómo hacemos la conexión?
+Seguimos el app.js
+
+    //Required
+    var mongoose = require('mongoose');
+
+    // Conexion a la base de datos
+    mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (error, response) => {
+        if (error) throw error;
+
+        console.log('Base de datos: \x1b[32m%s\x1b[0m', 'online');
+    });
+    
+# Ya tenemos el servidor Express corriendo junto con la base de datos Mongo en NODE.
 
