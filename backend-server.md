@@ -85,3 +85,26 @@ console.log('Express server puerto 3000: **\x1b[5m%s\x1b[0m**', 'online');
        BgWhite = "\x1b[47m"
 
 
+#### Crear la primera ruta
+
+Creamos la primera ruta en el app.js
+
+    app.get('/', (req, res, next) => {
+        res.status(200).json({
+            ok: true,
+            mensaje: 'Petición realizada correctamente'
+        })
+    });
+    
+Para ver si está funcionando, hay que bajar el servicio de la terminal y volver a levantarlo.
+Con el backend siempre es así. Ahora vemos que nos devuelve un JSON.
+
+##### Vamos a probar con Postman
+Mientras el servidor está corriendo, vamos a introducir **localhost:3000** como petición GET, en el 
+postman. De esta manera verificamos que todas las peticiones se están haciendo correctamente.
+
+##### NODEMON - Monitoriza el backend
+Para no tener que estar bajando y subiendo el servidor a cada cambio, existe una librería NODEMON.
+Vamos a instalarla:
+De forma global: **npm install -g nodemon** (va a pedir ser el admintrador)
+Solo para el proyecto de desarrollo: **npm install --save-dev nodemon**
