@@ -351,7 +351,7 @@ Nos vamos nuevamente a las rutas **routes/usuario.js**, y creamos la petición d
     });
     });
 
-## Autentificación y Login (POST)
+## Autenticación y Login (POST)
 
 Vamos a crear otras routes para la autentificación
  1. Creamos un nuevo archivo **routes/login.js**
@@ -438,11 +438,70 @@ Vamos a crear otras routes para la autentificación
  **https://jwt.io/**
  
  ahí pegamos el token y también el SEED. y nos autentificará el token.
+ 
+ 
+## Limitar las acciones solo si está autenticado.
+
+Vamos a hacer que el Actualizar, Crear y Borrar, solo lo puedan hacer usuarios autenticados con un token.
+Para ello:
+
+1. Vamos a crear una nueva carpeta en el directorio raiz **middlewares**
+NOTA: Un middleware es algo que queremos que se ejecute.
+2. Creamos el archivo **autenticacion.ts** con el siguiente código.
+
+        var jwt = require('jsonwebtoken');
+
+        var SEED = require('../config/config').SEED;
+
+        // ==============================
+        //  Verificar token
+        // ==============================
+        exports.verificaToken = function(request, response, next) {
+
+            var token = request.query.token;
+
+            jwt.verify(token, SEED, (error, decoded) => {
+
+                if (error) {
+                    return response.status(401).json({
+                        ok: false,
+                        mensaje: 'Token incorrecto',
+                        errors: error
+                    })
+                }
+
+                request.usuario = decoded.usuario;
+
+                next();
+                // return response.status(200).json({
+                //     ok: true,
+                //     decoded: decoded
+                // })
+            });
+          }
 
 
+3. Lo que hacemos es crear una funcion la cual vamos a tener que exportar.
+Esa funcion tiene un **request, responde y next**.
+4. Esa funcion necesita el token que lo cojemos de la url, y va llamar a la libreria de **jwt** para verificar el token,
+con el **SEED**.
+5. El **decoded** del callback de jwt.verify, contiene los datos que se usaron para la encriptación.
+Es por eso que lo guardamos en el variable request, para que todas las funciones que 
+pasen por esta autenticacion, tengan quien hizo la acción.
+6. Despues llamamos a la función **next()**, que va permitir ir corriendo las demás peticiones.
 
+7. Para usarlo:
 
-    
+        app.put('/:id', mdAutenticacion.verificaToken, (request, response, next) => {
+        
+    También puede mandarse más middleware en un arreglo [mdAutenticacion.verificaToken, mdAutenticacion1.verificaToken1]
+    Cuando mandemos la respuesta buena, le mandamos **usuarioToken: req.usuario**
+
+        response.status(201).json({
+            ok: true,
+            usuario: usuarioGuardado,
+            usuarioToken: req.usuario
+        });
 
 
 
