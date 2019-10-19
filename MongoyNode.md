@@ -69,35 +69,37 @@ para poder liego relacionarlas con otras bases de datos.
         // Rutas. Estamos definiendo las rutas.
         app.use('/', appRoutes);
         
-### Ahora vamos a crar las rutas para el usuario:
+### Ahora vamos a crear las rutas para el usuarios:
 
 1. Creamos el archivo **routes/usuario.js**
 
-        var express = require('express');
+          var express = require('express');
 
-        var app = express();
+          var app = express();
 
-        var Usuario = require('../models/usuario');
+          var Usuario = require('../models/usuario');
 
-        // Peticion a la raiz del servicio
-        app.get('/', (request, response, next) => {
+          // Peticion a la raiz del servicio
+          app.get('/', (request, response, next) => {
 
-            Usuario.find({}, (error, usuarios) => {
-                if (error) {
-                    return response.status(500).json({
-                        ok: false,
-                        mensaje: 'Error cargando usuarios',
-                        errors: error
-                    })
-                }
-                response.status(200).json({
-                    ok: true,
-                    usuarios: usuarios
-                });
-            });
-        });
+              Usuario.find({}, 'nombre email img role')
+                  .exec(
+                      (error, usuarios) => {
+                          if (error) {
+                              return response.status(500).json({
+                                  ok: false,
+                                  mensaje: 'Error cargando usuarios',
+                                  errors: error
+                              })
+                          }
+                          response.status(200).json({
+                              ok: true,
+                              usuarios: usuarios
+                          });
+                      });
+          });
 
-        module.exports = app;
+          module.exports = app;
      
 2. Modificamos el archivo **app.js**
 
@@ -116,6 +118,71 @@ para poder liego relacionarlas con otras bases de datos.
 **http://localhost:3000/usuario**
 
 Nos deberían de salir los mensajes correctos y los usuarios de la base de datos de Mongo.
+
+## Creando un usuario (POST)
+
+Para poder pasar comodamente los datos de entradda a una peqtición POST,
+tenemos un paquete en GitHub que se llama **body-parser**.
+
+### Descargamos el BODY-Parser
+
+**npm install body-parser --save**
+
+### Ahora vamos a configurarlo en el **app.js**
+
+      var bodyParser = require('body-parser');
+
+      // Body Parser
+      // parse application/x-www-form-urlencoded
+      app.use(bodyParser.urlencoded({ extended: false }));
+      app.use(bodyParser.json());
+      
+## Ahora vamos a crear la petición POST en routes/usuario.js
+
+app.post('/', (req, response) => {
+
+        var body = req.body;
+
+        var usuario = new Usuario({
+            nombre: body.nombre,
+            email: body.email,
+            password: body.password,
+            img: body.img,
+            role: body.role
+        });
+
+        usuario.save((error, usuarioGuardado) => {
+
+            if (error) {
+                return response.status(500).json({
+                    ok: false,
+                    mensaje: 'Error al crear usuarios',
+                    errors: error
+                });
+            }
+            response.status(201).json({
+                ok: true,
+                usuario: usuarioGuardado
+            });
+
+        });
+    });
+
+    module.exports = app;
+    
+### Para probarlo, nos vamos al POSTMAN
+
+POST => **http://localhost:3000/usuario**
+En el **Body** usamos x-www-form-urlencoded
+He introducimos los datos que queremos.
+Aquí podemos ver que si no introducimos los valores como en el esquema definido,
+desde Mongoo nos van a salir los mensajes de error.
+
+
+
+
+
+
 
 
 
