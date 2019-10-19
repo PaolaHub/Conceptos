@@ -316,6 +316,40 @@ guardando ese valor en la base de datos.
               });
           });
       });
+      
+## Borrar un usuario (DELETE)
+
+Nos vamos nuevamente a las rutas **routes/usuario.js**, y creamos la petición de delete:
+*NOTA: El nombre que definamos en la ruta (**este_id**) es el mismo que tenemos que usar cuando llamamos a los params.*
+
+    app.delete('/:este_id', (request, response, next) => {
+    
+    var id = request.params.este_id;
+
+    Usuario.findByIdAndDelete(id, (error, usuarioBorrado) => {
+
+        if (error) {
+            return response.status(500).json({
+                ok: false,
+                mensaje: 'Error al borrar usuario',
+                errors: error
+            });
+        }
+
+        if (!usuarioBorrado) {
+            return response.status(400).json({
+                ok: false,
+                mensaje: 'No existe un usuario con ese id',
+                errors: { message: 'No existe un usuario con ese id' }
+            });
+        }
+
+        response.status(200).json({
+            ok: true,
+            usuario: usuarioBorrado
+        });
+    });
+});
 
 
 
