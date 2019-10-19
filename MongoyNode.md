@@ -139,33 +139,33 @@ tenemos un paquete en GitHub que se llama **body-parser**.
       
 ## Ahora vamos a crear la petición POST en routes/usuario.js
 
-app.post('/', (req, response) => {
+        app.post('/', (req, response) => {
+        
+          var body = req.body;
 
-        var body = req.body;
+          var usuario = new Usuario({
+              nombre: body.nombre,
+              email: body.email,
+              password: body.password,
+              img: body.img,
+              role: body.role
+          });
 
-        var usuario = new Usuario({
-            nombre: body.nombre,
-            email: body.email,
-            password: body.password,
-            img: body.img,
-            role: body.role
-        });
+          usuario.save((error, usuarioGuardado) => {
 
-        usuario.save((error, usuarioGuardado) => {
+              if (error) {
+                  return response.status(500).json({
+                      ok: false,
+                      mensaje: 'Error al crear usuarios',
+                      errors: error
+                  });
+              }
+              response.status(201).json({
+                  ok: true,
+                  usuario: usuarioGuardado
+              });
 
-            if (error) {
-                return response.status(500).json({
-                    ok: false,
-                    mensaje: 'Error al crear usuarios',
-                    errors: error
-                });
-            }
-            response.status(201).json({
-                ok: true,
-                usuario: usuarioGuardado
-            });
-
-        });
+          });
     });
 
     module.exports = app;
