@@ -3,6 +3,7 @@
 1. Levantamos el servidor de Mongo
 2. Nos conectamos al puerto
 3. Nos vamos a nuestra base de datos y hacemos click derecho en Collectios y creamos usuarios.
+
                       {
                           "nombre" : "Fernando",
                           "email" : "fernando@gmail.com",
@@ -10,6 +11,7 @@
                           "img" : null,
                           "role" : "ADMIN_ROLE"
                       }
+                      
 4. Una vez que se crear, Mongo automáticamente le va añadir una nueva propiedad que es el "id",
 para poder liego relacionarlas con otras bases de datos.
 
