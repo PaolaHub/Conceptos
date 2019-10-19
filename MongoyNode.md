@@ -178,6 +178,54 @@ He introducimos los datos que queremos.
 Aquí podemos ver que si no introducimos los valores como en el esquema definido,
 desde Mongoo nos van a salir los mensajes de error.
 
+### Validaciones
+
+Mongoose tiene un plugin para hacer que los mensaje de error por "Unique" se vean mejor
+
+**npm install mongoose-unique-validator --save**
+
+Ese plugin lo añadimos al **models/usuarios.js**
+
+    var mongoose = require('mongoose');
+    var uniqueValidator = require('mongoose-unique-validator');
+
+    var Schema = mongoose.Schema;
+
+    var rolesValidos = {
+        values: ['ADMIN_ROLE', 'USER_ROLE'],
+        message: '{VALUE} no es un rol permitido'
+    };
+
+    // Definición del esquema
+    var usuarioSchema = new Schema({
+
+        nombre: { type: String, required: [true, 'El nombre es necesario'] },
+        email: { type: String, unique: true, required: [true, 'El email es necesario'] },
+        password: { type: String, required: [true, 'La contraseña es necesaria'] },
+        img: { type: String, required: false },
+        role: { type: String, required: true, default: 'USER_ROLE', enum: rolesValidos }
+    });
+
+    // Aquí le decimos al esquema de usuarios que ese esquema tiene el uniqueValidator y le podemos definor el mensaje.
+    usuarioSchema.plugin(uniqueValidator, { message: '{PATH} debe de ser único' });
+
+    // Para poder usarlo fuera hay que exportarlo.
+    module.exports = mongoose.model('Usuario', usuarioSchema);
+    
+En este mismo ejemplo, se ha definidos unos parámetros para el campo "ROL": 
+
+    var rolesValidos = {
+        values: ['ADMIN_ROLE', 'USER_ROLE'],
+        message: '{VALUE} no es un rol permitido'
+    };
+    
+para hacerselo saber:
+
+    role: { type: String, required: true, default: 'USER_ROLE', enum: rolesValidos }
+    
+
+
+
 
 
 
