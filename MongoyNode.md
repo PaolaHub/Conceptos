@@ -349,7 +349,95 @@ Nos vamos nuevamente a las rutas **routes/usuario.js**, y creamos la petición d
             usuario: usuarioBorrado
         });
     });
-});
+    });
+
+## Autentificación y Login (POST)
+
+Vamos a crear otras routes para la autentificación
+ 1. Creamos un nuevo archivo **routes/login.js**
+ 2. Importamos lo necesario:
+  * El express porque vamos hacer peticiones.
+  * Bcrypt porque vamos a tener que comparar las encriptaciones.
+  * Vamos a levantar el servicio Express.
+  * Vamos a crearnos nuestro modelo, porque vamos a tener que ver si existe el usuario.
+  * Para poder usarlo fuera del archivo, vamos a exportarlo.
+ 
+        var express = require('express');
+        var bcrypt = require('bcryptjs');
+
+
+        var app = express();
+
+        var Usuario = require('../models/usuario');
+
+        module.exports = app;
+        
+ 3. Ahora vamos a usar nuestro archivo **app.js**
+  * Importamos el archivo de routes (**var loginRoutes = require('./routes/login');**)
+  * Creamos el middleware **use** (**app.use('/login', loginRoutes);**)
+  
+  4. Ahora vamos a crear nuestra petición POST.
+    
+    app.post('/', (request, response, next) => {
+    
+      var body = request.body;
+
+      Usuario.findOne({ email: body.email }, (error, usuarioDB) => {
+
+          if (error) {
+              return response.status(500).json({
+                  ok: false,
+                  mensaje: 'Error al buscar usuarios',
+                  errors: error
+              });
+          }
+
+          if (!usuarioDB) {
+              return response.status(400).json({
+                  ok: false,
+                  mensaje: 'Credenciales incorrectas - email',
+                  errors: error
+              });
+          }
+
+          if (!bcrypt.compareSync(body.password, usuarioDB.password)) {
+              return response.status(400).json({
+                  ok: false,
+                  mensaje: 'Credenciales incorrectas - password',
+                  errors: error
+              });
+          }
+
+          // Crear un token!!!
+          usuarioDB.password = ':)';
+          // 1. PAYLOAD. Tenemos que poner la data que queremos colocar en el token, se conoce como el payload
+          // 2. SEED. Algo que nos ayude a hacer unico a nuestro token.
+          // 3. Fecha de expiración en segundos. 4 horas
+          var token = jwt.sign({ usuario: usuarioDB }, 'este-es-un-seed-dificil', { expiresIn: 14400 })
+
+          response.status(200).json({
+              ok: true,
+              usuario: usuarioDB,
+              token: token,
+              id: usuarioDB._id
+          });
+      });
+      
+  5. Crear Token
+  Para crear el token que ves en el ejemplo de arriba, hemos instalado un paquete
+  
+  **https://github.com/auth0/node-jsonwebtoken**
+  
+  Lo instalamos:
+  
+  **npm install jsonwebtoken --save**
+  
+ Si vamos al POSTMAN y enviamos la petición, nos saldra el token.
+ Con este token vamos a la página
+ 
+ **https://jwt.io/**
+ 
+ ahí pegamos el token y también el SEED. y nos autentificará el token.
 
 
 
