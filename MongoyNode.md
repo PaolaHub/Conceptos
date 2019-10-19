@@ -223,6 +223,14 @@ para hacerselo saber:
 
     role: { type: String, required: true, default: 'USER_ROLE', enum: rolesValidos }
     
+    
+## Para encriptar una contraseña
+
+Para encriptar una contraseña hay un pluging en GitHub que es el bscrypt.js
+Esta es una encriptación de una sola vía.
+
+Lo instalamos **npm install bcryptjs --save** (--save porque será una dependencia de nuestro projecto).
+    
 
 
 
