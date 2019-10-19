@@ -1,3 +1,7 @@
+## Necesario
+
+Para usar estas indicaciones, hay que haber configurador un Backend-Server con Node, Express y Mongo
+
 ## Empezamos creando una colección usuarios en Mongo:
 
 1. Levantamos el servidor de Mongo
