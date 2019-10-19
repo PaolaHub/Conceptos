@@ -245,6 +245,80 @@ y la usamos al crear al usuario:
 
 Si creamos un nuevo usuario con el Postman, veremos que ahora la contraseña está encriptada.
 
+## Actualizar un usuario (PUT)
+
+Vamos a crear otra petición en el **routes/usario.js**.
+Aquí vamos a cambiar la ruta con **'/:id** porque necesitamos el id
+del elemento que vamos a modificar.
+
+1. Primero vamos a coger de los **params** el id que se encuentra en el url.
+2. Segundo vamos a coger los elementos del **body** con los que queremos actualizar.
+3. Vamos a buscar en nuestra collection **Usuarios** si realmente existe ese "id".
+4. Definimos los erroes, si no lo encuentra, el objecto **usuario** vendría vacio,
+así que si se produce algún **error**, será por la conexión o a saber, es por eso
+que lo definimos con el error 500.
+(Tenemos un pdf con todos los errores y deberíamos definirlo bien, porque
+esto nos va ayudar mucho del lado de Angular)
+5. Luego vamos a actulizar el **usuario** de la respuesta del **findById**
+por el **request.body** y lo salvamos.
+6. La petición nos devolverá el objeto guardado si todo ha salido correctamenta.
+Para no ver la contraseña del usuario. La modificamos, pero esta modificación solo
+se hace para devolver el objecto dentro del callback. Eso quiere decir, que no estamos
+guardando ese valor en la base de datos.
+
+
+
+      app.put('/:id', (request, response, next) => {
+
+          var id = request.params.id;
+          var body = request.body;
+
+          Usuario.findById(id, (error, usuario) => {
+
+              if (error) {
+                  return response.status(500).json({
+                      ok: false,
+                      mensaje: 'Error al buscar usuario',
+                      errors: error
+                  });
+              }
+
+              if (!usuario) {
+                  return response.status(400).json({
+                      ok: false,
+                      mensaje: 'El usuario con el id' + id + ' no existe',
+                      errors: { message: 'No existe un usuario con ese ID' }
+                  });
+              }
+
+              usuario.nombre = body.nombre;
+              usuario.email = body.email;
+              usuario.role = body.role;
+
+              usuario.save((error, usuarioGuardado) => {
+                  if (error) {
+                      return response.status(400).json({
+                          ok: false,
+                          mensaje: 'Error al actualizar usuarios',
+                          errors: error
+                      });
+                  }
+
+                  // Esta es otra manera de modificar los datos que se le van a pasar.
+                  // OJO que no estamos guardando la carita feliz, porque la estamos
+                  // definiendo en el callback. La funcion save ya se hizo.
+                  usuarioGuardado.password = ':)';
+
+                  response.status(200).json({
+                      ok: true,
+                      usuario: usuarioGuardado
+                  });
+              });
+          });
+      });
+
+
+
 
     
 
