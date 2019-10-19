@@ -40,7 +40,7 @@ para poder liego relacionarlas con otras bases de datos.
 
               module.exports = mongoose.model('Usuario', usuarioSchema);
               
-## Creando las rutas de los servicios de usuario:
+## Creando las rutas de los servicios de usuario (GET)
 
 ### Primero vamos a modularizar las rutas
 
@@ -121,7 +121,7 @@ Nos deberían de salir los mensajes correctos y los usuarios de la base de datos
 
 ## Creando un usuario (POST)
 
-Para poder pasar comodamente los datos de entradda a una peqtición POST,
+Para poder pasar comodamente los datos de entradda a una petición POST,
 tenemos un paquete en GitHub que se llama **body-parser**.
 
 ### Descargamos el BODY-Parser
@@ -137,7 +137,7 @@ tenemos un paquete en GitHub que se llama **body-parser**.
       app.use(bodyParser.urlencoded({ extended: false }));
       app.use(bodyParser.json());
       
-## Ahora vamos a crear la petición POST en routes/usuario.js
+### Ahora vamos a crear la petición POST en routes/usuario.js
 
         app.post('/', (req, response) => {
         
@@ -224,7 +224,7 @@ para hacerselo saber:
     role: { type: String, required: true, default: 'USER_ROLE', enum: rolesValidos }
     
     
-## Para encriptar una contraseña
+## Enncriptar una contraseña
 
 Para encriptar una contraseña hay un pluging bastante conocido en GitHub que es el bscrypt.js
 Esta es una encriptación de una sola vía.
