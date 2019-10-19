@@ -253,7 +253,7 @@ del elemento que vamos a modificar.
 
 1. Primero vamos a coger de los **params** el id que se encuentra en el url.
 2. Segundo vamos a coger los elementos del **body** con los que queremos actualizar.
-3. Vamos a buscar en nuestra collection **Usuarios** si realmente existe ese "id".
+3. Vamos a buscar en nuestro modelo **Usuarios** si realmente existe ese "id".
 4. Definimos los erroes, si no lo encuentra, el objecto **usuario** vendría vacio,
 así que si se produce algún **error**, será por la conexión o a saber, es por eso
 que lo definimos con el error 500.
