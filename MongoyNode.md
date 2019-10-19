@@ -226,10 +226,26 @@ para hacerselo saber:
     
 ## Para encriptar una contraseña
 
-Para encriptar una contraseña hay un pluging en GitHub que es el bscrypt.js
+Para encriptar una contraseña hay un pluging bastante conocido en GitHub que es el bscrypt.js
 Esta es una encriptación de una sola vía.
 
 Lo instalamos **npm install bcryptjs --save** (--save porque será una dependencia de nuestro projecto).
+
+La añadimos en **routes/usuario.js**
+
+y la usamos al crear al usuario:
+
+    var usuario = new Usuario({
+        nombre: body.nombre,
+        email: body.email,
+        password: bcrypt.hashSync(body.password, 10),
+        img: body.img,
+        role: body.role
+    });
+
+Si creamos un nuevo usuario con el Postman, veremos que ahora la contraseña está encriptada.
+
+
     
 
 
