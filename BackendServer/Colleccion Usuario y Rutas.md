@@ -557,6 +557,32 @@ evitar	que	Mongoose	coloque	el	nombre	a	la	colección como	hospitals.
         img: { type: String, required: false },
         usuario: { type: Schema.Types.ObjectId, ref: 'Usuario' }
     }, { collection: 'hospitales' });
+    
+### POPULATE en los GET (Obtener información de otras tablas)
 
+Si un esquema contiene alguna relación por id con otra table,
+podemos hacer que nos aparezca a parte del id, todo su contenido usando la función populate.
+Sabemos que Medico contiene dos parámetros en su esquema, que son dos referencias a que **USUARIO** creo el medico
+y en que **HOPSITAL** se encuentra ese médico.
+Es por ello, que usamos dos populate.
 
+    // Petición GET
+    app.get('/', (req, res, next) => {
+    Medico.find()
+        .populate('usuario', 'nombre email')
+        .populate('hospital')
+        .exec((error, medicos) => {
+            if (error) {
+                return res.status(500).json({
+                    ok: false,
+                    mensaje: 'Error al cargar los medicos',
+                    errors: error
+                });
+            }
 
+            res.status(200).json({
+                ok: true,
+                medicos: medicos
+            });
+        });
+        });
