@@ -505,9 +505,48 @@ pasen por esta autenticacion, tengan quien hizo la acción.
 
 
 
+## Relacionar Tablas
+
+Se usa él : **type: Schema.Types.ObjectId, ref: 'Usuario'**
+
+    var mongoose = require('mongoose');
+
+    var Schema = mongoose.Schema;
+    var medicoSchema = new Schema({
+        nombre: { type: String, required: [true, 'El nombre	es necesario'] },
+        img: { type: String, required: false },
+        usuario: { type: Schema.Types.ObjectId, ref: 'Usuario', required: true },
+        hospital: {
+            type: Schema.Types.ObjectId,
+            ref: 'Hospital',
+            required: [true, 'El id	hospital es un campo obligatorio ']
+        }
+    });
+
+    module.exports = mongoose.model('Medico', medicoSchema);
+
+### Si se quiere relacionar más de un hospital a un médico:
 
 
+        hospital: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Hospital',
+            required: [true, 'El id	hospital es un campo obligatorio ']
+        }]
+        
+### En POST Y PUT
+1. POST:
 
+        var medico = new Medico({
+            nombre: body.nombre,
+            usuario: req.usuario._id,
+            hospital: body.hospital
+        });
+2. PUT:
+
+         medico.nombre = body.nombre;
+         medico.usuario = req.usuario._id;
+         medico.hospital = body.hospital;
 
 
 
