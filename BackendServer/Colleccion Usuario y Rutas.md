@@ -548,7 +548,15 @@ Se usa él : **type: Schema.Types.ObjectId, ref: 'Usuario'**
          medico.usuario = req.usuario._id;
          medico.hospital = body.hospital;
 
+### Schema
+**{	collection:	‘hospitales’ }** esto	simplemente	es	para	
+evitar	que	Mongoose	coloque	el	nombre	a	la	colección como	hospitals.
 
+    var hospitalSchema = new Schema({
+        nombre: { type: String, required: [true, 'El	nombre	es	necesario'] },
+        img: { type: String, required: false },
+        usuario: { type: Schema.Types.ObjectId, ref: 'Usuario' }
+    }, { collection: 'hospitales' });
 
 
 
