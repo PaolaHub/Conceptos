@@ -43,6 +43,7 @@ Esto va hacer que nos saque los 5 primeros.
 ¿Pero como vamos sacando el resto? Hay es donde entra el skip.
 
 2. SKIP
+
 Con el skip vamos a decir cuantos registros queremos saltarnos.
 El skip suponemos que nos entra como un valor opcional en la query, sino es 0.
 Por eso definimos el siguiente código:
