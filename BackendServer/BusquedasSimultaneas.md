@@ -1,4 +1,4 @@
-# Busquedas a diferentes colecciones de forma simultanea (Promise.all)
+# Busquedas en diferentes colecciones de forma simultánea (Promise.all)
 
 Para hacer una busqueda en dos o más colecciones diferentes, necesitariamos anidar promesas.
 Primero hacemos un Find ... then.. el otro find.. Esto va a tardar mucho, porque vamos a 
