@@ -97,6 +97,3 @@ En el archivo **upload.js** escribimos el siguiente código:
           });
 
           module.exports = app;
-
-
-
