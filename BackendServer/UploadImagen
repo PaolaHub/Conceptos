@@ -1,0 +1,102 @@
+# Vamos a subir una imagen
+
+Para ello vamos a descargarnos una librería:
+
+**express-fileupload** de https://github.com/richardgirges/express-fileupload
+
+Creamos una nueva ruta **upload.js** y la importamos y definimos en el **app.js**, como siempre
+
+En el archivo **upload.js** escribimos el siguiente código:
+
+          var express = require('express');
+          // Importamos la librería
+          const fileUpload = require('express-fileupload');
+
+          var app = express();
+
+          // default options - Middleware
+          app.use(fileUpload());
+
+          // Es una petición put porque lo que queremos hacer es modificar la "img"
+          // de las coleccion usuario, hospitales y medicos.
+          
+          // En la ruta tenemos que indicarle, a que colección va la imagene
+          // y también el id de la instancia.
+          app.put('/:tipo/:id', (req, res, next) => {
+
+              var tipo = req.params.tipo;
+              var id = req.params.id;
+
+              // Tipo de colección
+              var tipoValidos = ['hospitales', 'medicos', 'usuarios'];
+              
+              // Validando el tipo que llega de la ruta
+              if (tipoValidos.indexOf(tipo) < 0) {
+                  return res.status(400).json({
+                      ok: false,
+                      mensaje: 'Tipo de colección no válida',
+                      errors: { message: 'Tipo de colección no válida' }
+                  });
+              }
+
+              // Validamos si no se ha seleccionado ningún archivo.
+              if (!req.files) {
+                  return res.status(400).json({
+                      ok: false,
+                      mensaje: 'No selecciono nada',
+                      errors: { message: 'Debe de seleccionar una imagen' }
+                  });
+              }
+
+              // Obtener nombre del archivo
+              // ".imagen" es la variable que definimos en el postman cuando le pasamos el archivo
+              // Este archivo se pasa por el "body" como "form-data". Se selecciona "File"
+              // y seleccionamos con el browser un archivo para hacer pruebas.
+              var archivo = req.files.imagen;
+              
+              // Vamos a sacar la extension para luego comprobar si es realmente una imagen lo 
+              // que hemos subido como archivo.
+              var nombreCortado = archivo.name.split('.');
+              var extensionArchivo = nombreCortado[nombreCortado.length - 1];
+
+              // Sólo estas extensiones aceptamos
+              var extensionesValidas = ['png', 'jpg', 'gif', 'jpeg'];
+
+              // Validación del tipo del archivo subido.
+              if (extensionesValidas.indexOf(extensionArchivo) < 0) {
+                  return res.status(400).json({
+                      ok: false,
+                      mensaje: 'Extensión no válida',
+                      errors: { message: 'Las extensiones válidas son: ' + extensionesValidas.join(', ') }
+                  });
+              }
+
+              // Nombre de archivo personalizado 
+              // Al archivo que guardamos en el backend, le cambiamos el nombre para que no cree conflictos.
+              var nombreArchivo = `${ id }-${ new Date().getMilliseconds() }.${extensionArchivo}`;
+
+              // Mover el archivo del temporal al path (a nuestro backendserver, para eso creamos una carpeta en el directorio
+              // raiz "uploads" y dentro tres carpetas más "medicos", "hospitales" y "usuarios".)
+              var path = `./uploads/${tipo}/${nombreArchivo}`;
+              archivo.mv(path, (error) => {
+                  if (error) {
+                      return res.status(500).json({
+                          ok: false,
+                          mensaje: 'Error al mover archivo',
+                          errors: error
+                      });
+                  }
+              });
+
+
+              res.status(200).json({
+                  ok: true,
+                  mensaje: 'Archivo movido',
+                  extensionArchivo: extensionArchivo
+              })
+          });
+
+          module.exports = app;
+
+
+
