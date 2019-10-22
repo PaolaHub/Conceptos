@@ -34,4 +34,25 @@ Tenemos el siguiente código donde definimos una petición GET:
                           });
                       });
           });
+          
+1. LIMIT 
+
+Hacemos que limitemos el número de registros a 5.
+Esto va hacer que nos saque los 5 primeros.
+**.limit(5)**
+¿Pero como vamos sacando el resto? Hay es donde entra el skip.
+
+2. SKIP
+Con el skip vamos a decir cuantos registros queremos saltarnos.
+El skip suponemos que nos entra como un valor opcional en la query, sino es 0.
+Por eso definimos el siguiente código:
+
+              var desde = req.query.desde || 0;
+              desde = Number(desde);
+              
+Nos tenemos que asegurar que el número que nos llega es un número
+y no otra cosa, si la persona ingresa una palabra, el código va a petar.
+
+Una vez definimos el **.skip(desde)**
+
 
