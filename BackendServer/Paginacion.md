@@ -56,4 +56,9 @@ y no otra cosa, si la persona ingresa una palabra, el código va a petar.
 
 Una vez definimos el **.skip(desde)**
 
+3. COUNT
+
+Para saber el número de registros que hay,
+usamos otra funcion de Mongoose **.count()**, como en el ejemplo.
+
 
