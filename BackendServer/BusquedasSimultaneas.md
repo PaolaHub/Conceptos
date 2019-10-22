@@ -1,5 +1,13 @@
 # Busquedas a diferentes colecciones de forma simultanea (Promise.all)
 
+Para hacer una busqueda en dos o más colecciones diferentes, necesitariamos anidar promesas.
+Primero hacemos un Find ... then.. el otro find.. Esto va a tardar mucho, porque vamos a 
+tener que esperar a que terminen todas las promesas de una en una y además el código nos queda
+muy engorroso.
+
+El ECMAScript6 nos proporciona una nueva function: **Promise.all()**.
+Esta función nos permite llamar a diferentes promesas de forma paralela y se define de la siguiente manera:
+
           var express = require('express');
 
           var app = express();
@@ -8,7 +16,7 @@
           var Medico = require('../models/medico');
           var Usuario = require('../models/usuario')
 
-          // Peticion a la raiz del servicio
+          // Peticion de búsqueda general
           app.get('/todo/:busqueda', (req, res, next) => {
 
               var busqueda = req.params.busqueda;
