@@ -357,7 +357,7 @@ Si nos vamos ahora al navegador y escribimos => **localhost:3000/uploads**
 Nos aparecen las carpetas y dentro de ellas las fotos que hemos subido.
 Nos crea un sistema de archivos, usando ese plugging.
 
-####¿Cuál es el problema con esta librería?
+#### ¿Cuál es el problema con esta librería?
 Que cualquiera que se sepa la ruta va poder tener accedo a las imagenes.
 Por ello esta solución no es la más apropiada en nuestro caso.
 
