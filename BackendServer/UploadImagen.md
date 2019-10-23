@@ -339,3 +339,88 @@ borrar la anterior para que no se nos llene de archivos.var express = require('e
                     module.exports = app;
 
 
+# Desplegar imagenes: FileSystem
+
+Hay un pluggin en GitHub => https://github.com/expressjs/serve-index
+que podemos instalarlo y con muy poco código nos crea una ruta
+donde se pueden ver las carpetas creadas en el uploads.
+
+Una vez descargado el paquete con **npm install serve-index --save**.
+Definimos la configuracion en nuestro **app.js**
+
+          // Server index config ()
+          var serveIndex = require('serve-index');
+          app.use(express.static(__dirname + '/'));
+          app.use('/uploads', serveIndex(__dirname + '/uploads'));
+ 
+Si nos vamos ahora al navegador y escribimos => **localhost:3000/uploads**
+Nos aparecen las carpetas y dentro de ellas las fotos que hemos subido.
+Nos crea un sistema de archivos, usando ese plugging.
+
+####¿Cuál es el problema con esta librería?
+Que cualquiera que se sepa la ruta va poder tener accedo a las imagenes.
+Por ello esta solución no es la más apropiada en nuestro caso.
+
+# Crear una ruta para obtener las imagenes
+
+Cremos una nueva ruta en **routes/imagenes.js**
+
+          var express = require('express');
+
+          var app = express();
+          
+          app.get('/', (request, response, next) => {
+              response.status(200).json({
+                  ok: true,
+                  mensaje: 'Petición realizada correctamente'
+              })
+          });
+
+          module.exports = app;
+          
+La importamos y definimos en el **app.js**
+
+          var imagenesRoutes = require('./routes/imagenes');
+          app.use('/img', imagenesRoutes);
+          
+Nuestra ruta en el postman será:
+
+**localhost:3000/img/usuarios/imagensubida.jpg**
+
+1. Necesitamos saber el nombre de la carpeta donde buscar (usuarios, medicos, hospitales del uploads).
+2. Necesitamos saber el nombre de la imagen también.
+3. Nuestro código quedará de esta manera:
+
+          var express = require('express');
+
+          var app = express();
+
+          // Este path ya viene con Node, no hay que instalar nada.
+          const path = require('path');
+          const fs = require('fs');
+
+
+          app.get('/:tipo/:img', (req, res, next) => {
+
+              // El tipo tiene que ser igual al nombre de las carpetas que están en el uploads.
+              var tipo = req.params.tipo;
+              var img = req.params.img;
+
+              // Definimos la ruta donde está la imagen:
+              var pathImagen = path.resolve(__dirname, `../uploads/${ tipo }/${img}`);
+
+              // Validamos que la ruta existe y la enviamos en el res, si no, enviamos una imagen preparada.
+              if (fs.existsSync(pathImagen)) {
+                  res.sendFile(pathImagen);
+              } else {
+                  var pathNoImagen = pathImagen = path.resolve(__dirname, '../assets/no-img.jpg');
+                  res.sendFile(pathImagen);
+              }
+          });
+
+          module.exports = app;
+
+
+
+
+
