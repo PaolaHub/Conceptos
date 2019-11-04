@@ -1,1 +1,36 @@
 
+# Vamos a conectar el Backend con el Frontend
+
+Lo primero que tenemos que hacer es tener abierto:
+
+1. Mongo (mongod.exe)
+2. Backend-Server (npm start)
+3. Frontend (ng serve -o)
+4. Visual Studio con la carpeta del frontend.
+
+## Creando un modelo de usuario en el Frontend
+
+Lo primero que haces es observar a los usuario en la base de datos.
+Vemos que los usuarios tienen sus propiedades que definimos en el backend-Server.
+
+Para poder comunicarnos entonces de manera fácil, vamos a crearnos en el Frontend
+también un modelo de datos de usuario, para que cada vez que recibamos o enviemos
+información la hagamos siguiendo el mismo modelo.
+
+Entonces, en el Frontend, en **src/app** creamos una nueva carpeta **models**.
+Dentro creamos el archivo **usuario.model.ts** y definimos nuestro modelo en typescript:
+
+        export class Usuario {
+
+            constructor(
+                public nombre: string,
+                public email: string,
+                public password: string,
+                public img?: string,
+                public role?: string,
+                public google?: boolean,
+                // tslint:disable-next-line: variable-name
+                public _id?: string
+            ) {}
+
+        }
