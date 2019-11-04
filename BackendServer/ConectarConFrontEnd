@@ -20,17 +20,17 @@ información la hagamos siguiendo el mismo modelo.
 Entonces, en el Frontend, en **src/app** creamos una nueva carpeta **models**.
 Dentro creamos el archivo **usuario.model.ts** y definimos nuestro modelo en typescript:
 
-        export class Usuario {
+                export class Usuario {
 
-            constructor(
-                public nombre: string,
-                public email: string,
-                public password: string,
-                public img?: string,
-                public role?: string,
-                public google?: boolean,
-                // tslint:disable-next-line: variable-name
-                public _id?: string
-            ) {}
+                    constructor(
+                        public nombre: string,
+                        public email: string,
+                        public password: string,
+                        public img?: string,
+                        public role?: string,
+                        public google?: boolean,
+                        // tslint:disable-next-line: variable-name
+                        public _id?: string
+                    ) {}
 
-        }
+                }
