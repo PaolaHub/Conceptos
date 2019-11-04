@@ -34,3 +34,20 @@ Dentro creamos el archivo **usuario.model.ts** y definimos nuestro modelo en typ
                     ) {}
 
                 }
+                
+ ## Creando usuarios
+ 
+ Formularios: Reactiv form y por template
+ 
+ 1. Crear los formularios
+ 2. Crear las validaciones
+ 4. Hacer que el formulario tenga su propio submit y llame a una funcion del componente.
+    De momento esa funcion va a mostar por consola los datos del usuario que se acaba de registrar
+ 
+ 5. Crear un servicio nuevo usuario.service.ts y crear un método post que llame a nuestro backend, que está corriendo
+ con la ruta que hemos definido. Para ello, tenemos que importar el HttpClient y en el module el HttpClientModule
+ 
+ 6. Injectar el nuevo servicio en el componente register y hacer que el submit llama la funcion del servicio
+ y se subcriba a ella. Si todo lo hace bien, navegar
+ 
+ 
