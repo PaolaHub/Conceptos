@@ -87,8 +87,8 @@ Vamos a definir en la clase un FormGroup con el mismo nombre al que definimos en
             
 En el OnInit vamos a definir al formularion y lo maquetamos:
 
-El primer campo es el valor, en este caso lo estamos dejando a null
-y el segundo le hacemos las validaciones.
+Forma es un FormGroup, donde como primer paámetro se definen las campos del formulario (su valor, si es requerido, etc)
+y como segundo parámetro podemos definirle validaciones personalizadas.
 
                 // Definición y maquetación del formulario
                 this.forma = new FormGroup({
@@ -97,7 +97,34 @@ y el segundo le hacemos las validaciones.
                   password: new FormControl(null, Validators.required),
                   password2: new FormControl(null, Validators.required),
                   condiciones: new FormControl(false)
+                  
+Vemos como en la siguiente línea se una **validación personalizada**
+
                 }, {validators: this.sonIguales('password', 'password2') });
+                
+Tenemos que crer una **validación personalizada**, para asegurarnos que las dos contraseñas introducidas con iguales.
+Para ello, creamos una funcion, de esta manera:
+
+La función va a recibir en este ejemplo dos campos, las dos contraseñas, y tiene que devolver una funcion callback.
+Donde recibe el formulario y devuelve null, si no son iguales o el mismo nombre de la funcion a true.
+Es un poco peculiar veamos un ejemplo:
+
+
+              sonIguales(campo1: string, campo2: string) {
+                  return (group: FormGroup) => {
+
+                    const pass1 = group.controls[campo1].value;
+                    const pass2 = group.controls[campo2].value;
+
+                    if (pass1 === pass2) {
+                      return null;
+                    }
+
+                    return {
+                      sonIguales: true
+                    };
+                  };
+              }
                 
 Ahora definimos la función del submit:
 
