@@ -2,7 +2,10 @@
 
 En Angular podemos implementar dos tipos de formulario: **Por Template y Reaktiv Form**.
 
-## Reaktiv form
+Vamos a poner un ejemplo con dos formulario. Uno en el que un usuario se registra a una aplicación y
+otro de como se logea.
+
+## Reaktiv form - Register Form
 
 ### En el hmtl:
 
@@ -11,7 +14,9 @@ Hay que decile a Angular que ese formulario va ser tratado como un Reaktivform.
 Le definimos el formGroup que será una referencia al formulario y tratamos el Submit,
 en vez de dejarlo en un botón con type="submit".
 
-            <form [formGroup]="forma" (ngSubmit)="registrarUsuario()"
+            <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()"
+            
+Con el **ngNativeValidate** le estamos diciendo a Chrom que trate las validaciones que le definamos.
 
 A cada entada hay que definirle un **formControlName** y un **name**.
 
@@ -72,3 +77,66 @@ Un ejemplo:
                     </div>
                 </div>
             </form>
+
+
+### En el component.ts
+
+Vamos a definir en la clase un FormGroup con el mismo nombre al que definimos en el **hmtl**.
+
+            forma: FormGroup;
+            
+En el OnInit vamos a definir al formularion y lo maquetamos:
+
+El primer campo es el valor, en este caso lo estamos dejando a null
+y el segundo le hacemos las validaciones.
+
+                // Definición y maquetación del formulario
+                this.forma = new FormGroup({
+                  nombre: new FormControl(null, Validators.required),
+                  correo: new FormControl(null, [Validators.required, Validators.email]),
+                  password: new FormControl(null, Validators.required),
+                  password2: new FormControl(null, Validators.required),
+                  condiciones: new FormControl(false)
+                }, {validators: this.sonIguales('password', 'password2') });
+                
+Ahora definimos la función del submit:
+
+              registrarUsuario() {
+
+this.forma está referenciado con el formulario del hmtl. Así que tenemos ahí toda la información.
+
+                if (this.forma.invalid) {
+                    return;
+                }
+                
+Aquí le estamos diciendo que si no acepta las condiciones del formulario, no puede registrarse
+
+                if (!this.forma.value.condiciones) {
+                  swal('Importante!', 'Debe de aceptar las condiciones!', 'warning');
+                  console.log('Debe de aceptar las condiciones');
+                  return;
+                }
+                
+Cuando ya sabemos que el formulario es válido, creamos a un usuario con los datos del formulario.
+
+                const usuario = new Usuario(
+                  this.forma.value.nombre,
+                  this.forma.value.correo,
+                  this.forma.value.password
+                );
+                
+ Y llamamos a nuestro servicio, que creara unnuevo usuario en nuestra base de datos.
+
+                // Esto no se va a disparar a menos que nos subcribamos
+                this._usuarioService.crearUsuario(usuario)
+                // Todo lo que el postman devuelve en el "res", es lo que está dentro del resp.
+                .subscribe(resp => this.router.navigate(['/login']));
+              }
+              
+### Conclusión
+Con el Reaktiv form, definimos el formulario en el **.ts** y nos evitamos que nuestro **html** sea demasiado engorroso.
+Este método es bueno para formularios grandes.
+
+## Por Template - Login Form
+
+
