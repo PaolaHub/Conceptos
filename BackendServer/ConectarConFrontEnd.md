@@ -35,7 +35,7 @@ Dentro creamos el archivo **usuario.model.ts** y definimos nuestro modelo en typ
 
             }
                 
- ## Creando usuarios
+ ## Conectado con el Backend-Server
  
 Una vez creado nuestro modelo, vamos a crear los servicios.
 En este ejemplo vamos a crear el servicio usuarios para crear un nuevo usuario en el registro, o hacer un login.
@@ -84,6 +84,7 @@ Definimos las variables donde guardaremos al usuario y el token.
 
 Cuando se inicie el servicio vamos a recoger al usuario y token del localStorage, 
 por si ya hay un usuario.
+
                       this.cargarStorage();
 
                    }
@@ -141,13 +142,12 @@ Construimos la ulr, tenemos que fijarnos, como la hemos definido en el Backend.
 
                     const url = URL_SERVICIOS + '/login/google';
                     
-Hacemos la llamada http y le pasamos el token recogido por Google (este token lo hemos recogido en login.component.ts)
-Si todo hay salido bien (los errores aún no los estamos recogiendo, solo se muestran en consola), esta petición nos devuelve
-una **resp**, que es la misma que hemos estado biendo en el POSTMAN.
+Hacemos la petición http y le pasamos el token recogido por Google (este token lo hemos recogido en login.component.ts)
+Si todo ha salido bien (los errores aún no los estamos recogiendo, solo se muestran en consola), esta petición nos devuelve
+una **resp**, que es la misma que hemos estado biendo en el POSTMAN. Con esta respuesta json que hemos definido en el Backend, vamos hacer un par de cosas:
 
-Con esta respuesta json que hemos definido en el Backend, vamos hacer un par de cosas:
-- La primera es guardar el id , el tolen y al usuario en el localStorage
-- Segundo es definir lo que esta petición va a devolver, en este caso es un true. Nada más.
+- La primera es guardar el id , el token y al usuario en el localStorage
+- Segundo es definir lo que esta petición va a devolver un observable, en este caso es un true. Nada más. Está función devuelve un observable al que vamos a tener que subcribirnos.
 
                     return this.http.post(url, {token})
                       .pipe(map((resp: any ) => {
@@ -158,15 +158,32 @@ Con esta respuesta json que hemos definido en el Backend, vamos hacer un par de 
                   
 **Funcion - Conexión con Backend-Server**.
 
+Aquí vamos a logear a un usuario, vamos a recibir al usuario que vendrá de un formulario y recibimos también,
+si queremos que el usuario se recuerde para no volver a escribir la dirección.
+
                 login(usuario: Usuario, recordar: boolean = false) {
+
+Si el usuario quiere recordar el e-mail, lo vamos a guardar en el localStorage.
+Como hemos visto más arriba, cuando el servicio se inicia, se carga el localStorage y si encontramos
+el email, va aparcer en este caso en el formulario.
 
                   if (recordar) {
                     localStorage.setItem('email', usuario.email);
                   } else {
                     localStorage.removeItem('email');
                   }
+                  
+ Vamos a contruir la url tal como la definimos en el Backend-Server.
 
                   const url = URL_SERVICIOS + '/login';
+      
+Hacemos la petición http y le pasamos como parámetro al usuario (recogido desdee el formulario). Esta petición nos devuelve
+una **resp**, que es la misma que hemos estado viendo en el POSTMAN.
+
+ Con esta respuesta json que hemos definido en el Backend, vamos hacer un par de cosas:
+- La primera es guardar el id , el tolen y al usuario en el localStorage
+- Segundo es definir lo que esta petición va a devolver, en este caso es un true. Nada más. Está función devuelve un observable al que vamos a tener que subcribirnos.
+
                   return this.http.post(url, usuario)
                     .pipe(map((res: any ) => {
 
@@ -177,14 +194,24 @@ Con esta respuesta json que hemos definido en el Backend, vamos hacer un par de 
 
 **Funcion - Conexión con Backend-Server**.
 
+Aquí vamos a crear un usuario nuevo.
+
                   crearUsuario(usuario: Usuario) {
 
+ Vamos a construir la url tal como la definimos en el Backend-Server.
+ 
                     const url = URL_SERVICIOS + '/usuario';
-                    // Para ser notificado cuando esto se haga vamos a decolver un observador al que nos vamos
-                    // a poder subcribir.
+                    
+Hacemos la petición http para conectarnos con el Backend-Server y le pasamos como parámetro al usuario (recogido desdee el formulario). Esta petición nos devuelve una **resp**, que es la misma que hemos estado viendo en el POSTMAN.
+
+Con esta respuesta json que hemos definido en el Backend, vamos hacer un par de cosas:
+- La primera es mostrat un popup al usuario, diciendole que el usuario se ha creado.
+- Segundo es definir lo que esta petición va a devolver, en este caso devolvermos al usuario. Nada más. Está función devuelve un observable al que vamos a tener que subcribirnos.
+
+                    // Para ser notificado cuando esto se haga vamos a devolver un observador al que nos vamos
+                    // a poder subscribir.
                     return this.http.post(url, usuario)
                       .pipe(map( (res: any) => {
-
                         swal('Usuario creado', usuario.email, 'success');
                         return res.usuario;
                       }));
@@ -192,16 +219,73 @@ Con esta respuesta json que hemos definido en el Backend, vamos hacer un par de 
                   }
                 }
 
+ ## Llamar a las peticiones del servico.
  
- 1. Crear los formularios
- 2. Crear las validaciones
- 4. Hacer que el formulario tenga su propio submit y llame a una funcion del componente.
-    De momento esa funcion va a mostar por consola los datos del usuario que se acaba de registrar
+Como ya sabemos, para poder trabajar con este servicio, hay que injectarlo en el componente que deseemos.
+En nuestro caso, vamos a injectarlo en el componente login y register.
+Casa vez que el usuario, le de a el botón **"Ingresar" o "Crear nueva cuenta"** vamos a llamar en el **submit**,
+a las funciones de nuestro servicio.
+
+### register.component.ts
+
+Injectamos nuestro servicio en el constructor
+
+              constructor(
+                // tslint:disable-next-line: variable-name
+                public _usuarioService: UsuarioService,
+                public router: Router
+              ) { }
+  
+En la funcion **submit**, llamamos a las funciones de nuestro servicio.
+
+              registrarUsuario() {
+
+                if (this.forma.invalid) {
+                    return;
+                }
+
+                if (!this.forma.value.condiciones) {
+                  swal('Importante!', 'Debe de aceptar las condiciones!', 'warning');
+                  console.log('Debe de aceptar las condiciones');
+                  return;
+                }
+                
+Crea al usuario, desde elformulario
+
+                const usuario = new Usuario(
+                  this.forma.value.nombre,
+                  this.forma.value.correo,
+                  this.forma.value.password
+                );
+
+Llama a la funcion **crearUsuario** pasandole el usuario.
+Como la función nos devuelve un observable, hay que subscribirse.
+Cuando la peticón termina, nos va avisar y en la **resp** tendremos al usuario, aunque no vamos hacer nada con él.
+No único que hacemos es redirigirnos a la página de login, para que el usuario pueda hacer el login.
+
+                // Esto no se va a disparar a menos que nos subcribamos
+                this._usuarioService.crearUsuario(usuario)
+                // Todo lo que el postman devuelve en el "res", es lo que está dentro del resp.
+                .subscribe(resp => this.router.navigate(['/login']));
+              }
  
- 5. Crear un servicio nuevo usuario.service.ts y crear un método post que llame a nuestro backend, que está corriendo
- con la ruta que hemos definido. Para ello, tenemos que importar el HttpClient y en el module el HttpClientModule
- 
- 6. Injectar el nuevo servicio en el componente register y hacer que el submit llama la funcion del servicio
- y se subcriba a ella. Si todo lo hace bien, navegar
- 
- 
+### login.component.ts 
+
+              ingresar(forma: NgForm) {
+
+                if (forma.invalid) {
+                  return;
+                }
+
+Crea al usuario, desde elformulario
+
+                const usuario = new Usuario(null, forma.value.email, forma.value.password);
+
+Llama a la funcion **login** pasandole el usuario y si quiere que lo recuerde, para guaradar el email en el localStorage.
+Como la función nos devuelve un observable, hay que subscribirse.
+Cuando la peticón termina, nos va avisar y en la **resp** tendremos un true, aunque no vamos hacer nada con él.
+No único que hacemos es redirigirnos a la página principal de la app.
+
+                this._usuarioService.login(usuario, forma.value.recuerdame).subscribe( resp => this.route.navigate(['/dashboard']));
+              }
+
