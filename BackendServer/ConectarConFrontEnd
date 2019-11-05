@@ -20,20 +20,20 @@ información la hagamos siguiendo el mismo modelo.
 Entonces, en el Frontend, en **src/app** creamos una nueva carpeta **models**.
 Dentro creamos el archivo **usuario.model.ts** y definimos nuestro modelo en typescript:
 
-                export class Usuario {
+            export class Usuario {
 
-                    constructor(
-                        public nombre: string,
-                        public email: string,
-                        public password: string,
-                        public img?: string,
-                        public role?: string,
-                        public google?: boolean,
-                        // tslint:disable-next-line: variable-name
-                        public _id?: string
-                    ) {}
+                constructor(
+                    public nombre: string,
+                    public email: string,
+                    public password: string,
+                    public img?: string,
+                    public role?: string,
+                    public google?: boolean,
+                    // tslint:disable-next-line: variable-name
+                    public _id?: string
+                ) {}
 
-                }
+            }
                 
  ## Creando usuarios
  
@@ -158,22 +158,22 @@ Con esta respuesta json que hemos definido en el Backend, vamos hacer un par de 
                   
 **Funcion - Conexión con Backend-Server**.
 
-                  login(usuario: Usuario, recordar: boolean = false) {
+                login(usuario: Usuario, recordar: boolean = false) {
 
-                    if (recordar) {
-                      localStorage.setItem('email', usuario.email);
-                    } else {
-                      localStorage.removeItem('email');
-                    }
-
-                    const url = URL_SERVICIOS + '/login';
-                    return this.http.post(url, usuario)
-                      .pipe(map((res: any ) => {
-
-                        this.guardarStorage(res.id, res.token, res.usuario);
-                        return true;
-                      }));
+                  if (recordar) {
+                    localStorage.setItem('email', usuario.email);
+                  } else {
+                    localStorage.removeItem('email');
                   }
+
+                  const url = URL_SERVICIOS + '/login';
+                  return this.http.post(url, usuario)
+                    .pipe(map((res: any ) => {
+
+                      this.guardarStorage(res.id, res.token, res.usuario);
+                      return true;
+                    }));
+                }
 
 **Funcion - Conexión con Backend-Server**.
 
