@@ -33,3 +33,43 @@ otro en particular, pero generar un middleware como el que ahí aparece.
         app.listen(80, function () {
           console.log('CORS-enabled web server listening on port 80')
         })
+Por ejemplo, si es esto es un local host y nosotros estamos trabajando en una red interna de una empresa, podemos permitir X cantidad de conexiones solo de un dominio en particular o si ustedes tienen un aplicación y la app está montada en un dominio en particular y solo de ahí van a recibir peticiones, les recomendaria que se tomaran la molestia de configurar el cors correctamente.
+
+En nuestro caso, vamos hacerlo de una manera rápida.
+
+https://enable-cors.org/server.html
+
+Seleccionamos el servidor o el código del Backend que nosotros tenemos corriendo ahí.
+En nuestro caso es ExpressJS.
+
+Para avitar el CORS, aquí tenemos varios registros, varias formas de hacerlo.
+
+     app.use(function(req, res, next) {
+       res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+       next();
+     });
+
+     app.get('/', function(req, res, next) {
+       // Handle the get for this route
+     });
+
+     app.post('/', function(req, res, next) {
+      // Handle the post for this route
+     });
+     
+ Este sería el middleware que vamos a copiar, añadiendole una línea más para controlar
+ que métodos van a poder estar permitidos. Con el * le estamos diciendo que cualquier lugar va a poder hacer las peticiones.
+ 
+     app.use(function(req, res, next) {
+       res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+       res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+       next();
+     });
+     
+
+¿Donde lo colocamos?
+En nuestro app.js del backend-server
+
+
