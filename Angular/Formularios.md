@@ -11,7 +11,7 @@ otro de como se logea.
 
 Hay que decile a Angular que ese formulario va ser tratado como un Reaktivform.
 
-Le definimos el formGroup que será una referencia al formulario y tratamos el Submit,
+Le definimos el **[formGroup]** que será una referencia al formulario y tratamos el **Submit**,
 en vez de dejarlo en un botón con type="submit".
 
             <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()"
@@ -26,11 +26,9 @@ A cada entada hay que definirle un **formControlName** y un **name**.
             <input formControlName="password2" name="password2" class="form-control" type="password" required placeholder="Confirmar contraseña">
             
 Al haber definido el submit en la etiqueta del form, le estamos diciendo a Angular que trate a este
-formulario como un Reaktivform y cuando se encuentre otro submit en algún botón, lova a ignorar.
+formulario como un Reaktivform y cuando se encuentre otro submit en algún botón, lo va a ignorar.
 
 Un ejemplo:
-
-
 
             <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()" class="form-horizontal form-material"        id="loginform" action="index.html">
                 <a href="javascript:void(0)" class="text-center db"><img src="assets/images/logo-icon.png" alt="Home" /><br/><img src="assets/images/logo-text.png" alt="Home" /></a>
@@ -80,6 +78,10 @@ Un ejemplo:
 
 
 ### En el component.ts
+
+Es importante importar lo siguiente, para que nos funcione:
+
+            import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 Vamos a definir en la clase un FormGroup con el mismo nombre al que definimos en el **hmtl**.
 
