@@ -168,4 +168,87 @@ Este método es bueno para formularios grandes.
 
 ## Por Template - Login Form
 
+Vamos a usuar un formulario de login para este ejemplo
 
+### En el hmtl
+
+Para usar el formulario por template tenemos que definir una variable en la etiqueta **<form>**.
+            
+            <form ngNativeValidate #f="ngForm" class="form-horizontal form-material" (ngSubmit)="ingresar(f)" id="loginform" action="index.html">
+            
+Esta variable es **#f** de tipo **ngForm**. Como no vamos a tener una referencia, como en el caso del Reaktiv Form,
+tenemos que pasarle esa variable f a la función que hacer el submit, es por eso que definimos **(ngSubmit)="ingresar(f)"**.
+Como ya hemos explicado anteriormente también usamos **ngNativeValidate**, para decirle a Chrome que trate
+las validaciones que definamos.
+ 
+A cada campo input hay que definirle la el **ngModel y un **name**.
+Si queremos referenciar la entrada con una variable en el componente.ts, escribimos **[ngModel]**.
+
+             <input [ngModel]="email" name="email" class="form-control" type="email" required placeholder="Correo del usuario">
+             <input ngModel name="password" class="form-control" type="password" required placeholder="Contraseña">
+             <input [ngModel]="recuerdame" name="recuerdame" id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
+
+Si observamos las validaciones se están haciendo en el mismo html: **type="email" required**
+
+Ejemplo del formaulario completo:
+ 
+            <form ngNativeValidate #f="ngForm" class="form-horizontal form-material" (ngSubmit)="ingresar(f)" id="loginform" action="index.html">
+                <a href="javascript:void(0)" class="text-center db"><img src="../assets/images/logo-icon.png" alt="Home" /><br/><img src="../assets/images/logo-text.png" alt="Home" /></a>
+                <div class="form-group m-t-40">
+                    <div class="col-xs-12">
+                        <input [ngModel]="email" name="email" class="form-control" type="email" required placeholder="Correo del usuario">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input ngModel name="password" class="form-control" type="password" required placeholder="Contraseña">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="checkbox checkbox-primary pull-left p-t-0">
+                            <input [ngModel]="recuerdame" name="recuerdame" id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
+                            <label for="checkbox-signup"> Recuérdame </label>
+                        </div>
+                        <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Olvide contraseña?</a> </div>
+                </div>
+                <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit">Ingresar</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
+                        <div class="social">
+                            <button type="button" id="btnGoogle" class="btn btn-googleplus" data-toggle="tooltip" title="Iniciar sesion con Google"> <i aria-hidden="true" class="fa fa-google-plus"></i> </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-b-0">
+                    <div class="col-sm-12 text-center">
+                        No tienes cuenta? <a routerLink="/register" class="text-primary m-l-5"><b>Crear cuenta</b></a>
+                    </div>
+                </div>
+            </form>
+
+
+### En el component.ts
+
+Vamos a definir la funcion del submit
+
+              ingresar(forma: NgForm) {
+              
+Si el formulario no es válido, salimos y no hacemos nada.
+
+                if (forma.invalid) {
+                  return;
+                }
+Si es valido, construimos a un usuario.
+
+                const usuario = new Usuario(null, forma.value.email, forma.value.password);
+                
+Llamamos al servicio que va hacer que el usuario se logee, creando un token y nos subcribimos para que
+se lance y cuando termine, nos navegue al dashboard de nuestra página.
+
+                this._usuarioService.login(usuario, forma.value.recuerdame).subscribe( correcto => this.route.navigate(['/dashboard']));
+              }
