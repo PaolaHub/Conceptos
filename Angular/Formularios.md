@@ -252,3 +252,21 @@ se lance y cuando termine, nos navegue al dashboard de nuestra página.
 
                 this._usuarioService.login(usuario, forma.value.recuerdame).subscribe( correcto => this.route.navigate(['/dashboard']));
               }
+              
+              
+Para hacer que funcione el botón *Recuerdame*, creamos las variables de referencia (con el mismo nombre que las definidas
+en el html). Estás variables contienen, lo que usuario escriba en el formulario.
+
+              recuerdame: boolean = false;
+              email: string;
+
+Al hacer el login, se guarda en el localStorage el email del usuario que se ha registrado.
+Y cuando la pantalla se inicie de nuevo, vamos a buscar si hay algo en el localStorge si el recuerdame está checked true.
+
+    // Si no existe el email, no guardes nada.
+    this.email = localStorage.getItem('email') ||  '';
+    if ( this.email.length > 1) {
+      this.recuerdame = true;
+    }
+              
+
