@@ -4,6 +4,29 @@ En Angular podemos implementar dos tipos de formulario: **Por Template y Reaktiv
 
 ## Reaktiv form
 
+### En el hmtl:
+
+Hay que decile a Angular que ese formulario va ser tratado como un Reaktivform.
+
+Le definimos el formGroup que será una referencia al formulario y tratamos el Submit,
+en vez de dejarlo en un botón con type="submit".
+
+            <form [formGroup]="forma" (ngSubmit)="registrarUsuario()"
+
+A cada entada hay que definirle un **formControlName** y un **name**.
+
+            <input formControlName="nombre" name="nombre" class="form-control" type="text" required placeholder="Nombre">
+            <input formControlName="correo" name="correo" class="form-control" type="text" required placeholder="Correo">
+            <input formControlName="password" name="password" class="form-control" type="password" required placeholder="Contraseña">
+            <input formControlName="password2" name="password2" class="form-control" type="password" required placeholder="Confirmar contraseña">
+            
+Al haber definido el submit en la etiqueta del form, le estamos diciendo a Angular que trate a este
+formulario como un Reaktivform y cuando se encuentre otro submit en algún botón, lova a ignorar.
+
+Un ejemplo:
+
+
+
             <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()" class="form-horizontal form-material"        id="loginform" action="index.html">
                 <a href="javascript:void(0)" class="text-center db"><img src="assets/images/logo-icon.png" alt="Home" /><br/><img src="assets/images/logo-text.png" alt="Home" /></a>
                 <h3 class="box-title m-t-40 m-b-0">Regístarte ahora</h3><small>Crea una cuenta y disfruta</small>
