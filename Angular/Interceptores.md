@@ -39,7 +39,7 @@ Una vez creado solo hay que hacer dos cosas:
     
 NOTA. Vemos como el servicio interceptor no hay que inyectarlo en ningún construtor.
 
-# A contnuación dejamos los ejemplos
+# A continuación dejamos los ejemplos
 
 ## usuario.service.ts
 
