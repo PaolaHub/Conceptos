@@ -103,3 +103,16 @@ Pero que pasa si nosotros quisieramos una alineación de un hijo determinado.
             <div class="item4 align-seft-start">Col 4</div>
         </div>
         
+Comportamiento responsive: **align-seft-sm-start**
+
+## La magia de Flex-fill
+
+Hijos flexibles. Esta clase se le aplica a los hijos.
+Esta clase hace que los elementos no ocupen solo el espacio de su contenido, sino que aprovechen todo el espacio 
+del padre.
+
+        <div class="d-flex align-items-center"> 
+            <div class="item2 flex-fill">Col 2</div>
+            <div class="item3 flex-fill">Col 3</div>
+            <div class="item4 flex-fill">Col 4</div>
+        </div>
