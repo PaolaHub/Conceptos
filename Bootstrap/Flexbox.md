@@ -14,7 +14,7 @@ Para crear un entorno Flexbox, hay que crear un objeto con el display: flex
                 // Todos los elementos definidos aquí, se agruparan uno detrás de otro, ignorando la
                 // propiedad block de cada elemento.
         </div>
-        
+           
 Para ahorrarnos definir el código csss, bootstrap nos proporciona la clase d-flex
 
         <div class="d-flex">
@@ -24,6 +24,8 @@ Para ahorrarnos definir el código csss, bootstrap nos proporciona la clase d-fl
             <div class="item3">Col 3</div>
             <div class="item4">Col 4</div>
         </div>
+        
+Comportamiento responsive: **d-md-flex**
 
 ## Orientación (row or column)
 
@@ -43,7 +45,7 @@ Para echo tenemos en css la propiedad **flex-direccion** o en bootstrap **flex-c
             <div class="item4">Col 4</div>
         </div>
 
-## Alineación en el eje principal
+## Alineación en el eje principal ( Sobre el eje horizontal )
 
 Los hijos pueden alinearse a la derecha a la izq. al centro con espacio entre ellos, etc..
 Esto lo podemos hcaer con la propiedad csss **justify-content**.
@@ -62,3 +64,27 @@ La clase definida ya en Bootstrap es **justify-content-**
             <div class="item3">Col 3</div>
             <div class="item4">Col 4</div>
         </div>
+        
+Comportamiento responsive: **justify-content-md-center**
+
+## Alineación en el eje secundario ( Sobre el eje vertical )
+
+Los hijos pueden alinearse ocupando todo la altura del padre, pueden alinearse arriba, en el centro o abajo.
+Esto lo podemos hcaer con la propiedad csss **align-items**.
+
+        .entorno {
+          display: flex;
+          align-items: stretch (ocupa toda la altura del padre); 
+           /* flex-end (abajo), flex-start (arriba), center (de centrar de manera vertical) */
+        }
+        
+La clase definida ya en Bootstrap es **align-items-** start, center, end, stretch
+Tenemos: align-items-start / align-items-center / align-items-end  / align-items -stretch
+
+        <div class="d-flex align-items-center"> 
+            <div class="item2">Col 2</div>
+            <div class="item3">Col 3</div>
+            <div class="item4">Col 4</div>
+        </div>
+        
+Comportamiento responsive: **align-items-sm-start**
