@@ -2,6 +2,8 @@
 
 Un entorno flexbox permite agrupar fácilmente un conjunto de cajas de diversas maneras/posiciones, ahorrandonos mucho en código.
 
+## Entorno
+
 Para crear un entorno Flexbox, hay que crear un objeto con el display: flex
 
         .entorno {
@@ -23,8 +25,10 @@ Para ahorrarnos definir el código csss, bootstrap nos proporciona la clase d-fl
             <div class="item4">Col 4</div>
         </div>
 
-Por defecto los elemntos de alinean uno detrás de otro, pero también podemos hacer que se alineen, uno debajo de otro,
-en este caso cada elemento ocupará toda la anchura del padre.
+## Orientación (row or column)
+
+Por defecto los elemntos se orientan de manera horizontal (row) uno detrás de otro, pero también podemos hacer que se alineen, uno por debajo de otro, orientación vertical, en este caso cada elemento ocupará toda la anchura del padre.
+Para echo tenemos en css la propiedad **flex-direccion** o en bootstrap **flex-column**.
 
         .entorno {
           display: flex;
@@ -33,7 +37,7 @@ en este caso cada elemento ocupará toda la anchura del padre.
         
 ó ahorrando código:
 
-        <div class="d-flex **flex-column**">
+        <div class="d-flex flex-column">
             <div class="item2">Col 2</div>
             <div class="item3">Col 3</div>
             <div class="item4">Col 4</div>
