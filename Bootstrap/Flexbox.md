@@ -1,4 +1,4 @@
-#Flexbox
+# Flexbox
 
 Un entorno flexbox permite agrupar un conjunto de cajas de distinta manera, ahorrandonos mucho en código.
 
