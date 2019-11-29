@@ -116,3 +116,16 @@ del padre.
             <div class="item3 flex-fill">Col 3</div>
             <div class="item4 flex-fill">Col 4</div>
         </div>
+        
+### Ordenar los elementos.
+
+Se pueden ordenar los elementos con la clase **order-**
+En el siguiente ejemplo, vamos hacer que la columna "Col1" se ponga en la ultima posición. 
+
+        <div class="d-flex align-items-center"> 
+            <div class="item2 flex-fill order-1">Col 1</div>
+            <div class="item3 flex-fill">Col 2</div>
+            <div class="item4 flex-fill">Col 3</div>
+        </div>
+Si a un elemento no se le asigna ningún orden, tendrá el orden 0. 
+Bootstrap ordea los elementos de menos a mayor.
