@@ -88,3 +88,18 @@ Tenemos: align-items-start / align-items-center / align-items-end  / align-items
         </div>
         
 Comportamiento responsive: **align-items-sm-start**
+
+## Alineación individual de los hijos en el eje secundario
+
+Normalmente se le aplica al padre y afeca a todos los hijos.
+Pero que pasa si nosotros quisieramos una alineación de un hijo determinado.
+
+**.align-seft-start / .align-seft-center / .align-seft-end / .align-seft-stretch**
+
+
+        <div class="d-flex align-items-center"> 
+            <div class="item2">Col 2</div>
+            <div class="item3">Col 3</div>
+            <div class="item4 align-seft-start">Col 4</div>
+        </div>
+        
