@@ -42,3 +42,23 @@ Para echo tenemos en css la propiedad **flex-direccion** o en bootstrap **flex-c
             <div class="item3">Col 3</div>
             <div class="item4">Col 4</div>
         </div>
+
+## Alineación en el eje principal
+
+Los hijos pueden alinearse a la derecha a la izq. al centro con espacio entre ellos, etc..
+Esto lo podemos hcaer con la propiedad csss **justify-content**.
+Esto hace que todos los hijos que se encuentra dentro de un objeto con este clase definida,
+van a agruparse en el centro
+
+        .entorno {
+          display: flex;
+          justify-content: center; /* rigth, left, between, ... */
+        }
+        
+La clase definida ya en Bootstrap es **justify-content-**
+
+        <div class="d-flex justify-content-center">
+            <div class="item2">Col 2</div>
+            <div class="item3">Col 3</div>
+            <div class="item4">Col 4</div>
+        </div>
