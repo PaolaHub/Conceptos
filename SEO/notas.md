@@ -81,6 +81,11 @@ a leer mejor la web y lo va posicionar mejor)
   y no quieres que se indexe, pues definirle el atributo nofollow.
 - Enlaces - Atributo rel="canonical" para el link más relevante y tenga cierto peso
   para indexarlo.
+- Enlaces con atributo title. Y en ese title poner la palabra clave del articulo al que apunta.
+- Enlaces con texto relevante (titulo)
+- Imágenes con atributo ALT. y tambien el titulo.
+- Imágenes con nombre descriptivo y con tamaño reducido. (compressor.io o compresspng.com)
+- Reduce al mínimo el código en línea y spaghetti.
 
 ### Optimización del sitio web
 
