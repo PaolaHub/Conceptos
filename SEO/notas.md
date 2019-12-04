@@ -33,12 +33,65 @@ Porque los algorithmos tiene en cuenta muchas cosas.
 3. No se puede garantizar el éxito. Competencia, si una página tiene una alta competencia, le va ser más dificil que
 se posicione, porque ya la otra página está bien posicionada.
 
-
 # ¿Que es el SEM?
+
+Son campañas de pago.
+Para potenciar junto al SEO la visibilidad de nuestra web.
+Search Engine Marketing. Nos permite atraer tráfico (visitantes) a nuestro sitios web mediante
+campañas de marketing o publicitarias de pago.
+
+La diferencia
+El SEO es orgánico.
+El SEM es inmediato, si tu pagas vas aparecer el primero, pero si dejas de pagar
+ya no aparecer ahí en el buscador. Si no lo complementas con una campaña de SEO positiva
+pues ese dinero que invertimos va ser pan para hoy y agua para mañana.
+
+El SEM es mucho más rápido que el SEO. Pero mucho menos efectivo que el posicionamiento orgánico.
+El SEO es más afevtivo a largo plazo.
 
 # Que cosas no se pueden prometer en SEO
 
+El SEO real.
+Aparecer el primero en la página de resultados de Google(SERPs) (o un buscador).
+En pocos días aparacerás de los primeros.
+Alto volumen de visitas.
+Aparecer delante de los competidores.
+Todo rápido sin contenido.
+Quien te prometa esto te está engañando.
+Puedes caer en penalizaciones por malas practicas.
+
 # SEO On-Page
+
+### HTML para SEO
+
+Importante para el desarrollo del sitio web.
+Importante para la redacción de textos (copywriting).
+Buena semántica HTML5
+**(indexar es que Google nos lee la web y nos la posicione en el buscador)**
+
+### Optimización del sitio web
+
+Mejorar la velocidad de las webs.
+
+### Contenido
+
+Palabras claves.
+Búsqueda de palabras clave.
+Lo importate: el contenido.
+Optimizar el contenido.
+Como crear contenido de calidad.
+
+### Conseguir más trafico
+
+### Motivos de penalización
+
+### Cosas que perjudican al SEO
+
+
+
+
+
+
 
 # SEO Off-Page
 
