@@ -1,11 +1,13 @@
 
+# SEO y Posicionamiento web para Desarrolladores web
+
 # ¿ Qué es el SEO ?
 
 Search Engine Optimización (Optimización para motores de busquedad)
 Son las técnicas que nos permiten mejorar la optimización de nuestros sitios web
 para tener mejores posiciones en los buscadores de Internet de manera orgánica
 **Organico** (que no has pagado nada para posicionarlo)
-y acercarnos lo máximo posible a la primera posición. Que cuando alqguien bsque
+y acercarnos lo máximo posible a la primera posición. Que cuando alguien busque
 nuestra web, blog, la encuentre fácilmente y así pueda consumir nuesro contenido
 o comprar productos.
 
@@ -67,7 +69,7 @@ Puedes caer en penalizaciones por malas practicas.
 - Importante para el desarrollo del sitio web.
 - Importante para la redacción de textos (copywriting).
 - Buena semántica HTML5 (usar bien las etiquetas ya de html, va ayudar a Google
-a leer mejor la web y lo va posicionar mejor)
+a leer mejor la web y lo va posicionar mejor porque la va a indexar mucho mejor)
 **(indexar es que Google nos lee la web y nos la posicione en el buscador)**
 - Etiqueta title <title>
 - Etiquetas <meta> -title, description, keywords y robots
