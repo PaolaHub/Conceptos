@@ -64,10 +64,23 @@ Puedes caer en penalizaciones por malas practicas.
 
 ### HTML para SEO
 
-Importante para el desarrollo del sitio web.
-Importante para la redacción de textos (copywriting).
-Buena semántica HTML5
+- Importante para el desarrollo del sitio web.
+- Importante para la redacción de textos (copywriting).
+- Buena semántica HTML5 (usar bien las etiquetas ya de html, va ayudar a Google
+a leer mejor la web y lo va posicionar mejor)
 **(indexar es que Google nos lee la web y nos la posicione en el buscador)**
+- Etiqueta title <title>
+- Etiquetas <meta> -title, description, keywords y robots
+- Jerarquía de <h1> (único) <h2><h3...6> (muchos)
+- Párrafos <p> y listas <ul><ol>
+- Negritas <strong> (sin pasarnos)
+- Enlaces - Atributo nofollow en links no relevantes.
+  El addschortext (texto que hay dentro de un enlace). Poner ahí una palabra clave
+  Pero interesante en definirle el atributo **nofollow**, para deirle que no lo indexe.
+  Por ejemplo poner un enlace de un producto de amazon que realmente no está en tu web
+  y no quieres que se indexe, pues definirle el atributo nofollow.
+- Enlaces - Atributo rel="canonical" para el link más relevante y tenga cierto peso
+  para indexarlo.
 
 ### Optimización del sitio web
 
