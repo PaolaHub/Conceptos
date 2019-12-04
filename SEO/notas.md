@@ -71,7 +71,7 @@ a leer mejor la web y lo va posicionar mejor)
 **(indexar es que Google nos lee la web y nos la posicione en el buscador)**
 - Etiqueta title <title>
 - Etiquetas <meta> -title, description, keywords y robots
-- Jerarquía de <h1> (único) <h2><h3...6> (muchos)
+- Jerarquía de < h1 > (único) < h2 >< h3...6 > (muchos)
 - Párrafos <p> y listas <ul><ol>
 - Negritas <strong> (sin pasarnos)
 - Enlaces - Atributo nofollow en links no relevantes.
