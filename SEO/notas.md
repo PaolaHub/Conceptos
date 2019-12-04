@@ -11,6 +11,14 @@ o comprar productos.
 
 # Ventajas y desventajas del SEO
 
+1. Es gratuito
+
+
+1. No es inmediato. Igual no se posiciona de aquí a dos meses.
+No se puede prometer dentro del SEO que vaya aparecer en el puesto numero uno.
+El SEO es a largo plazo.
+
+
 # ¿Que es el SEM?
 
 # Que cosas no se pueden prometer en SEO
