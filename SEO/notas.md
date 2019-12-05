@@ -390,33 +390,81 @@ Directrices generales:
 #### Como aumentar las visitas y el trafico usando el CTR
 
 - CTR (Click Through Rate) numero de clicks a nuestro contenido. El porcentaje de clicks.
-- Click / Impresiones = CTR (a mayor CTR, mejor posicionamiento)
+- Click / Impresiones = CTR (a mayor CTR, mejor posicionamiento).
 - Título informativo, con llamada a la acción, provocativo (clickbait, cebo de clicks).
-
-
-
-Lo importate: el contenido.
-Optimizar el contenido.
-Como crear contenido de calidad.
-
-### Conseguir más trafico
+- Titulo con números.
+- Descripción informativa y llamativa.
+- Uso de emojis.
+- Rich snippets / microformatos (estrellitas, tarjetas, etc).
+- Buena url.
+- Optimización para la SERP (artículo de listas, top)
 
 ### Motivos de penalización
 
-### Cosas que perjudican al SEO
+Motivos de penalización graves de Google
 
+- Contenido oculto, texto con opacity cero.
+- Comprar enlaces y link building ( enlaces que apuntan a tu sitio) rápido.
+- Exceso de palabas claves.
+- Contenido copiado.
+- Enlaces a sitios de baja reputación.
+- Enlaces manipulados.
+- Demasiadas meta keywords (5 o 6 palabras claves).
+- Más de un h1 por página.
+- Tener demasiada publicidad.
+- SPAM en comentario.
 
+Cosas que perjudican al SEO en Google.
+- Carga lenta del sitio.
+- Contenido duplicado (usa Screaming Frog / serach console) o pobre.
+- Demasiados 404.
+- Mala estructura de URLs.
+- Contenido de golpe y no periódico.
+- Hablar de temas delicados.
+- Textos anti-naturales.
+- No tener HTTPS. Google tiene muy encuenta esto.
+- No tener la web Responsive.
+- Baja retención.
 
+Screaming Frog SEO Spider
 
+Programa para testear el rendimiendo de nuestra web.
+Hay que descargarlo.
 
+## SEO Off Page
 
+Son decisiones que se toman fuera de nuestra web.
+Que no depende tanto de nosotros, son acciones externas.
+Pero si que afectan al SEO.
 
-# SEO Off-Page
+Para hacer un buen SEO Off-Page:
 
-# Como indexar webs
+- Generar contenido de calidad recurrente.
+- Link building (enlaces externosen blogs, sitios relevantes, videos, social).
+- Compartir nuevo contenido en redes sociales (también los seguidores).
+- Si es un sitio físico registralo en Google My Bussiness y similares (en las páginas amarillas).
+- Enviar contenido con listas de correo (newsletters).
+- Contenido para gente interesada (si no tendrás rebote).
 
-# Factores extra para posicionamiento web
+OJO ! Todo esto no nos va a salvar la vida, pero nos va a ayudar.
+Hay que darle más importancia es el SEO.
 
-# SEO Práctico
+## Como Indexar una web
 
-# Posicionarte en los buscadores y tener + visitas
+Google lo hace automáticamente.
+
+- Añadir la web a Google con Search Console.
+- Añadir la web Google con Submit URL.
+- Enlaces externos desde otras webs. (los posiciona automáticamente).
+- Enlaces desde redes sociales. (los posiciona automáticamente).
+- Enlaces internos, todas las páginas enlazadas.
+- Sitemap.xml
+
+## Factores extra de posicionamiento
+
+- Generar contenido de calidad recurrente (freshness)
+- Aumentar el CTR (porcentaje de clicks)
+- + Tráfico + relevancia = + arriba en Google.
+- Retención de los usuarios (-rebote +posicionamiento)
+- El usuario se queda en tu web
+- Y todo lo comentado anteriormente.
