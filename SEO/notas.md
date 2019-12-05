@@ -305,11 +305,96 @@ está funcionando en nuestra web. Hay que registrarse y nos da un código que te
 - Reducir imágenes grandes.
 - Reduce anuncios y botones sociales.
 - Quitar o innecesario (menos elementos en la página, mejor rendimiento).
+- Compresion gzip. Comprimir las peticiones hace que vaya más rápido a nivel de http. Se puede activarlo en el .htaccedd.
+- PHP7
+
+### Google Page Speed
+
+Primero haya que ver que nuestras paginas no se cargen en más de 3 segundos.
+Despues podemos ir a la página de Google Page Speed 
+y escribiendo nuestro sitio web podemos hacer un análisis de rendecización.
+Nos va a devolver que es lo que podemos renderizar mejor.
 
 ### Contenido
 
-Palabras claves.
-Búsqueda de palabras clave.
+#### ¿Que es una palabra clave? (keywords)
+
+Palabra o frases que la gente busca.
+A más especifica (vertical) menor volumen de búsquedas (long tail), pero nos va a posicionar mucho mejor.
+A más genérica mayor volumen de búsqueda (genéricas) pero es mucho más dificil posicionarla, porque ya hay muchos competidores usado esas palabras genéricas.
+
+#### Búsqueda de palabras clave. "zapatillas baloncesto 2019"
+
+- ¿De que quiero hablar?
+- ¿Como lo buscaría yo? Me pongo en la piel del usuario
+- Google, sugerencias y pies de página.
+- Google Trends. Muy útil para ver cuales son la busquedad más usadas.
+- https://keywordtool.io/ (Nos busca palabras derivadas y las más usuadas por buscadores).
+
+#### Buscando palabras clave.
+
+- Domain score. Comn neilpatel.com Es muy dificil ponernos por encima de páginas que tienen un Domain score muy alto.
+  Volumen de busquedad muy bajo, pero teniendo una dificulta de posicionamiento baja, ahí tenemos una oportunidad.
+  Nos permite saber que por ciento de posibilidades tenemos para posicionarnos en Google.
+  https://app.neilpatel.com/es/ubersuggest
+- Surfea la tendencia
+- https://answerthepublic.com
+- No te preocupes demasiado, más crear y menos pensar.
+  
+#### Lo más importante del SEO + Google Search Console
+
+Lo importante: CONTENIDO (más que las palabras claves)
+
+- Intención de búsqueda (keyword research). Que ese contenido lo busca, lo encuentre y lo consuma.
+- Título con la palabra clave.
+- Primer párrafo con palabra clave.
+- Artículos con mínimo 300 palabras.
+- Repetir la palabra clave 5 o 6 veces, no más.
+- Usar sinónimos y palabras claves derivadas o relacionadas. Google Search Console.
+- Contenido de calidad, piensa en el usuario.
+- Imágenes con atributo alt y enlances con atributo title + keywords.
+
+#### + cosas para crear contenido
+
+- Hacer uso de negritas con sentido.
+- Hacer bien uso de los subtítutlos (h2,h3). Una buena jerarquía.
+- Hacer artículos tipo listado o top.
+- Añadir videos + retención. Hace que el usuario se quede más tiempo en la página y así lo vea Google.
+- Contenido evergreen (perdurable). Tu creas un articulo o producto que siempre este busando la gente. Siempre se está buscando,
+  igual no es la tendencia, pero siempre se va a buscar. (evergreen vs tendencia)
+- Buena categorización.
+
+#### Optimizar contenidos de la web
+
+- URL limpia, concreta y única.
+- URL con keyword.
+- Una keyword por página.
+- Título y descripción únicos.
+- La keyword está en el títutlo y la description.
+- Tiene que estar en el h1.
+- La keyword esta en el texto del articulo.
+- No hay más de una página con la misma keyword. Google no va saber cual posicionar bien. Tener un articulo por palabra clave.
+
+#### Como crear contenido de calidad
+
+Directrices generales:
+- Contenido único, exclusivo, útil y actual.
+- Buena estructura de encabezado.
+- Fácil de leer y sin faltas de ortografía.
+- Añadir fotos y videos.
+- Céntrate en el usuario, dale lo que necesita.
+- Artículo largos (más de 300 palabras).
+- Evergreen (no caduca).
+- Campo semántico (palabras relacionadas temática).
+
+#### Como aumentar las visitas y el trafico usando el CTR
+
+- CTR (Click Through Rate) numero de clicks a nuestro contenido. El porcentaje de clicks.
+- Click / Impresiones = CTR (a mayor CTR, mejor posicionamiento)
+- Título informativo, con llamada a la acción, provocativo (clickbait, cebo de clicks).
+
+
+
 Lo importate: el contenido.
 Optimizar el contenido.
 Como crear contenido de calidad.
