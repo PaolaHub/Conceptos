@@ -471,3 +471,31 @@ Google lo hace automáticamente.
 
 
 Section 12. Práctico - Creando una web desde cero.
+
+Elegir un buen hosting
+- Soporte lenguajes y CMS.
+- Almacenamiento
+- Velocidad (ssd y transferencia (o ancho de banda e 100GB). Suficiente giga de transferencia 100 GB de transferencia.
+- Que nos de un certificado SSL (para tener el HTTPS) o que nos regale un dominio.
+- Seguridad, que tenga copias de seguridad, que tenga corta fuegos, sistema de logs
+- Multiple (bd, sitios, dominios, emails)
+- Apps autoinstalables y software (PhpMyAdmin). Que monte en tu hosting un cms.
+- Soporte
+
+Recomendado: https://www.hostinet.com/hosting-web/hosting-ssd/?
+Gratuito para hacer pruebas: 000webhost
+
+SEO Práctico
+- Elegir hosting
+- Elegir dominio
+- Bajar y subir WP
+- Instalar WordPress
+- Definir el nicho y la marca
+- Palabra clave genérica y descripción
+- Robots y sitemap
+- Conectar con Google Analytics
+- Conectar con Search Console
+
+
+
+
