@@ -291,6 +291,20 @@ está funcionando en nuestra web. Hay que registrarse y nos da un código que te
 - Fácil navegación en el sitio (menús, breadcrumbs, sidebar con enlaces internos).
 - Página 404 útil. Siempre las mínimas posibles, pero si necesitamos alguna, que tenga documentación dentro para que pueda redirigirse
   o algo para que no quede tan vacia.
+  
+### Mejorar la velocidad de una web.
+
+- Hosting / servidor más rápido. Que la velocidad de carga o en el ping sea lo más rápido posible.
+- Cache de consultas. Podemos guargar en la cache la información de peticiones que se hagan por primera vez y luego
+  ir preguntando si existe esa información en la cache, para no tener que volver hacer ninguna otra petición y todo sea
+  más rápido.
+- Cache de vistas hace más o menos lo mismo que como el de consulta, pero lo qe guarda es un html ya renderizado anteriormente, con       todos los estilos, datos comprimidos... El primero que habra la página, va tardar pues 4 o 5 segundos, pero una vez en la cache, ya no   se tendran que hcaer tantas peticiones.
+- Comprimir imágenes para que no pesen tanto. (compressor.io, compresspng). Se pueden instalar paquetes y librerias para optimizar al     subirla.
+- Comprimir librerías y código / uso de cdn (en vez de tener la librería local en nuestro archivos, podemos hacer uso de los cdn, que     son link donde ya nos dan el código comprimido).
+- Reducir efectos visuales. (velocidad de carga es más lenta)
+- Reducir imágenes grandes.
+- Reduce anuncios y botones sociales.
+- Quitar o innecesario (menos elementos en la página, mejor rendimiento).
 
 ### Contenido
 
