@@ -99,6 +99,7 @@ está funcionando en nuestra web. Hay que registrarse y nos da un código que te
 - Sitio web rápido (más adelante).
 - Responsive web design.
 - robots.txt (manual). Es un achivo que le indica a Google que queremos que indexe y que no.
+  Ejemplo de un archivo robots.txt (https://www.genbeta.com/robots.txt)
 
         #
         # robots.txt
@@ -275,6 +276,17 @@ está funcionando en nuestra web. Hay que registrarse y nos da un código que te
         Sitemap: https://www.genbeta.com/2017/sitemap_galleries.xml
         Sitemap: https://www.genbeta.com/2016/sitemap_galleries.xml
         Sitemap: https://www.genbeta.com/2015/sitemap_galleries.xml
+        
+-Sitemap.xml (Se pueden generar instalando plugins o con xml-sitemaps.com)
+El sitemap tiene todas las urls de nuestra web.
+- Subir sitemap a Google (mediante el search console). Lo podemos tener en nuestra web generado en la raiz del proyecto.
+  Podemos directamente subir el archivo a Google mediante el search console, así a la hora de indexer lo va hacer mucho más
+  rápido y por ellos nos colocará mucho más arriba.
+- No hay URLs que lleven a ningún sitio (404). ¿Como podemos ver que nuestras página tiene urls 404?
+- Redirecciones 301 (.htaccess) En el archivo escribimos las redirecciones y ese archivo lo encontramos en el directorio principal         también. (Redirect 301 /Blog /blog). Blog sería la página 404 y e blog sería la página a la que direccionamos.
+- Añadir rel="prev" y rel="next" en paginaciones (no tan importante)
+- HTTPs activado. Tener activado el sistema HTTP de seguridad. Si no lo tenemos Google, nos va a penalizar.
+  Normalmente, en los hosting ya viene incluido y no tener que hacer mucho. Se puede redirigir las peticiones http a un https con un    plugings.
 
 ### Contenido
 
