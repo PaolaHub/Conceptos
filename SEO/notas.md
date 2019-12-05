@@ -468,3 +468,6 @@ Google lo hace automáticamente.
 - Retención de los usuarios (-rebote +posicionamiento)
 - El usuario se queda en tu web
 - Y todo lo comentado anteriormente.
+
+
+Section 12. Práctico - Creando una web desde cero.
