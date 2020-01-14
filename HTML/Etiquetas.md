@@ -119,9 +119,9 @@ Start with the most important heading (the largest) and end with the least impor
   
  ##### Highlight the word "FUN" in the text below.
     <p>HTML is <mark>FUN</mark> to learn!</p>
- <p>HTML is <mark>FUN</mark> to learn!</p>
  
- #####
- 
+ ##### Apply subscript formatting to the number "2" in the text below.
+    <p>H<sub>2</sub>O is the scientific term for water.</p> 
+ <p>H<sub>2</sub>O is the scientific term for water.</p>
  
  
