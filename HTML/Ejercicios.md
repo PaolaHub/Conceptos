@@ -290,22 +290,67 @@ Use an HTML element to provide the specified abbreviation of "WHO".
 
 The "tooltip" should say "Home".
     <a href="default.html" title="Home">Back to Home</a>
-   
-#####
+ 
+## HTML Images
 
-#####
+##### Use the HTML image attributes to set the size of the image to 250 pixels wide and 400 pixels tall.
+    <img src="scream.png" width="250" height="400">
+    
+##### Use CSS to set the size of the image to 250 pixels wide and 400 pixels tall.
+    <img src="scream.png" style="width:250px;height:400px;">
+    
+##### Use the correct HTML to make the image become a link to "default.html".
+    <a href="default.html">
+    <img src="smiley.gif">
+    </a>
 
-#####
+##### Make the image below float to the right of the paragraph.
+    <p>
+        <img src="smiley.gif" style="float:right;">
+        This is a paragraph.
+        This paragraph contains an image
+    </p>
+    
+##### Add the correct HTML attribute to display the "smiley.gif" image.
+    <img src="smiley.gif">
 
-#####
+##### Specify an alternate text for the image.
+The alternate text should say "Smiley".
+Alternate text is useful when the image cannot be displayed, like when the page is read by a screen reader.
 
-#####
+    <img src="smiley.gif" alt="Smiley">
 
-#####
+## HTML Tables
 
-#####
+##### Add a table row with two table headers.
+The two table headers should have the value "Name" and "Age".
 
-#####
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+         <tr>
+            <td>Jill Smith</td>
+            <td>50</td>
+         </tr>
+        </table>
+
+##### Add a table caption that says "Names".
+
+<table> 
+<caption>Names</caption>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Points</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+</table>
 
  
  
