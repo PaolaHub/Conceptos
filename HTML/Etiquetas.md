@@ -116,12 +116,14 @@ Start with the most important heading (the largest) and end with the least impor
  ##### Emphasize the word "metropolitan" in the text below.
     <h1>Tokyo</h1>
     <p>Tokyo is the capital of Japan, the most populous <em>metropolitan</em> area in the world.</p>
+  <p>Tokyo is the capital of Japan, the most populous <em>metropolitan</em> area in the world.</p>
   
  ##### Highlight the word "FUN" in the text below.
     <p>HTML is <mark>FUN</mark> to learn!</p>
+  <p>HTML is <mark>FUN</mark> to learn!</p>
  
  ##### Apply subscript formatting to the number "2" in the text below.
     <p>H<sub>2</sub>O is the scientific term for water.</p> 
- <p>H<sub>2</sub>O is the scientific term for water.</p>
+  <p>H<sub>2</sub>O is the scientific term for water.</p>
  
  
