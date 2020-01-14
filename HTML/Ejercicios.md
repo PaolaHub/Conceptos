@@ -335,8 +335,33 @@ The two table headers should have the value "Name" and "Age".
             <td>50</td>
          </tr>
         </table>
+        
+<table>
+<tr>
+    <th>Name</th>
+    <th>Age</th>
+</tr>
+ <tr>
+    <td>Jill Smith</td>
+    <td>50</td>
+ </tr>
+</table>
 
 ##### Add a table caption that says "Names".
+
+    <table> 
+    <caption>Names</caption>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Points</th>
+      </tr>
+      <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td>50</td>
+      </tr>
+    </table>
 
 <table> 
 <caption>Names</caption>
@@ -352,5 +377,234 @@ The two table headers should have the value "Name" and "Age".
   </tr>
 </table>
 
- 
+##### Use CSS styles to make the table 300 pixels wide.
+    <table style="width:300px">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Points</th>
+      </tr>
+      <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td>50</td>
+      </tr>
+    </table>
+
+<table style="width:300px">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Points</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+</table>
+
+##### Add a table row at the end of the table, with two table cells.
+
+The two table cells should have the value "Eve Jackson" and "94".
+
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+          <tr>
+            <td>Jill Smith</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Eve Jackson</td>
+            <td>94</td>
+          </tr>
+        </table>
+        
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve Jackson</td>
+    <td>94</td>
+  </tr>
+</table>
+
+##### Use the correct HTML attribute to make the first TH element span two columns.
+        <table>
+          <tr>
+            <th colspan="2">Name</th>
+            <th>Age</th>
+          </tr>
+          <tr>
+            <td>Jill</td>
+            <td>Smith</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Eve</td>
+            <td>Jackson</td>
+            <td>94</td>
+          </tr>
+        </table> 
+
+<table>
+  <tr>
+    <th colspan="2">Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+</table>
+
+##### Use the correct HTML attribute to make the second TH element span two rows.
+    <table>
+      <tr>
+        <th>Name</th>
+        <td>Jill Smith</td>
+      </tr>
+      <tr>
+        <th rowspan="2">Phone</th>
+        <td>555-77854</td>
+      </tr>
+      <tr>
+        <td>555-77854</td>
+      </tr>
+    </table>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <td>Jill Smith</td>
+  </tr>
+  <tr>
+    <th rowspan="2">Phone</th>
+    <td>555-77854</td>
+  </tr>
+  <tr>
+    <td>555-77854</td>
+  </tr>
+</table>
+
+
+## HTML List
+
+##### Add a list item with the text "Coffee" inside the <ul>.
+    
+    <ul>
+    <li>Coffee</li>
+    </ul>
+##### Finish the HTML code to make an ordered list.
+
+    <ol>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ol>
+
+##### Use CSS to display squares instead of bullets.
+    <ul style="list-style-type:square;">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+##### Use the correct HTML attribute to display letters (uppercase ABC) instead of numbers.
+    <ol type="A">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ol>
+##### Use the correct HTML attribute to display uppercase roman numbers.
+    <ol type="I">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ol>
+    
+##### Use the correct HTML elements to make a description of each term in the description list.
+    <dl>
+      <dt>Coffee</dt>
+        <dd>
+        - black hot drink
+        </dd>
+      <dt>Milk</dt>
+        <dd>
+        - white cold drink
+        </dd>
+    </dl>
+    
+## HTML Classes
+
+##### Create a class selector named "special".
+
+Add a color property with the value "blue" inside the "special" class.
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    .special 
+    {
+      color:blue;
+    }
+    </style>
+    </head>
+    <body>
+    <p class="special">My paragraph</p>
+    </body>
+    </html>
+    
+##### Add the correct class to make the H1 element red.
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    .mystyle {color:red;}
+    </style>
+    </head>
+    <body>
+
+    <h1 
+    class="mystyle">My Home Page</h1>
+
+    </body>
+    </html>
+    
+##### Add two classes to the H1 element, to make the background pink and the color red.
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    .intro {background:pink;}
+    .special {color:red;}
+    </style>
+    </head>
+    <body>
+    <h1 class="intro special">My Home Page</h1>
+    </body>
+    </html>
+    
+## HTML Id
+
+#####
+
+#####
+
+#####
  
