@@ -120,10 +120,14 @@ Start with the most important heading (the largest) and end with the least impor
   
  ##### Highlight the word "FUN" in the text below.
     <p>HTML is <mark>FUN</mark> to learn!</p>
-  <p>HTML is <mark>FUN</mark> to learn!</p>
+  <p>HTML is <mark>FUN</mark> to learn!</p> (FUN se debería ver con un color de fondo amarillo)
  
  ##### Apply subscript formatting to the number "2" in the text below.
     <p>H<sub>2</sub>O is the scientific term for water.</p> 
   <p>H<sub>2</sub>O is the scientific term for water.</p>
+  
+  ##### Add a line through (strikeout) the letters "blue" in the text below.
+    <p>My favorite color is <del>blue</del> red.</p>
+   <p>My favorite color is <del>blue</del> red.</p>
  
  
