@@ -602,9 +602,209 @@ Add a color property with the value "blue" inside the "special" class.
     
 ## HTML Id
 
-#####
+##### Add the correct HTML attribute to make the H1 element red.
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    #myheader {color:red;}
+    </style>
+    </head>
+    <body>
 
-#####
+    <h1 id="myheader">My Home Page</h1>
 
-#####
+    </body>
+    </html>
+    
+##### Create an id selector named "special".
+
+Add a color property with the value "blue" inside the "special" declaration block.
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    #special
+    {
+    color:blue    ;
+    }
+    </style>
+    </head>
+    <body>
+    <p id="special">My paragraph</p>
+    </body>
+    </html>
+
+## HTML Iframes
+
+##### Create an iframe with a URL address that goes to https://www.w3schools.com.
+    <iframe src="https://www.w3schools.com"></iframe>
+    
+##### Use an iframe attribute to make the iframe 500 pixels wide.
+    <iframe src="https://www.w3schools.com" width="500"></iframe>
+    
+##### Use CSS to display an iframe with no borders.
+    <iframe src="https://www.w3schools.com" style="border:none"></iframe>
+    
+##### Create an iframe with a URL address that goes to "default.html".
+    <iframe src="default.html">
+
+## HTML Scripts
+
+##### Use JavaScript to change the HTML content of the <p> element to "Hello World!".
+    
+    <body>
+    <p id="demo">Hi.</p>
+    <script>
+    document.getElementById("demo").innerHTML = "Hello World!";
+    </script>
+    </body>
+##### Use JavaScript to change the text size of the <p> element to 40 pixels.
+    
+    <body>
+    <p id="demo">Hi.</p>
+    <script>document.getElementById("demo").style.fontSize = "40px";</script>
+    </body>
+
+##### Use JavaScript to set the color of the <p> element to "red".
+    
+    <body>
+    <p id="demo">Hi.</p>
+    <script>document.getElementById("demo").style.color = "red";
+    </script>
+    </body>
  
+##### Use JavaScript to change the image source from "scream.png" to "smiley.gif".
+    <body>
+    <img id="demo" src="scream.png">
+    <script>
+    document.getElementById("demo").src = "smiley.gif";</script>
+    </body>
+
+## HTML Computercode
+
+##### Define the text "var person;" as programming code.
+    <p>Code example: <code>var person;</code></p>
+    
+##### Define the text inside the <code> element as preformatted text (to preserve spaces and line breaks).
+
+    <p>Code example:</p>
+    <pre>
+    <code>var person = {
+      firstName:"John",
+      lastName:"Doe"
+    }</code>
+    </pre>
+
+
+##### Define the character "x" in the equation as a variable.
+    <p>A simple math equation: <var>x</var> = 3 + 2; </p>
+    
+## HTML Forms
+
+##### In the form below, add an input field with the type "button" and the value "OK".
+    <form>
+    <input type="button" value="OK">
+    </form>
+    
+##### In the form below, add two radio buttons, both with the name "gender".
+    <form>
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female
+    </form>
+    
+##### Add a submit button, and specify that the form should go to "/action_page.php".
+    <form action="/action_page.php">
+    Name: <input type="text" name="name">
+    <input type="submit">
+    </form>
+    
+##### Specify that the form is submitted using the "POST" method.
+    <form action="/action_page.php" method="post">
+    Name: <input type="text" name="name">
+    <input type="submit">
+    </form>
+    
+##### In the form below, add an empty drop down list with the name "cars".
+    <form action="/action_page.php">
+    <select name="cars">
+    </select>
+    </form>
+    
+##### In the form below, add two option elements to the drop down list.
+
+The first option must have the value "Volvo"
+The second option must have the value "Ford".
+
+    <form action="/action_page.php">
+    <select name="cars">
+    <option value="Volvo">Volvo</option>
+    <option value="Ford">Ford</option>
+    </select>
+    </form>
+    
+##### In the form below, add a text area with the name "note".
+
+    <form action="/action_page.php">
+    <textarea name="note"></textarea>
+    </form>
+
+## HTML Input Types
+
+##### In the form below, add an input field for text, with the name "username" .
+    <form action="/action_page.php">
+    <input type="text" name="username">
+    </form>
+    
+##### In the form below, add a submit button with the value "Submit Form".
+    <form action="/action_page.php">
+    <input type="text" name="username">
+    <input type="submit" value="Submit Form">
+    </form>
+    
+##### Add two radio buttons with the name "color".
+    <form action="/action_page.php">
+      Favorite color:
+      Blue
+      <input value="blue" type="radio" name="color">
+      Red
+      <input value="red" type="radio" name="color">
+      <input type="submit">
+    </form>
+    
+##### In the form below, add a <button> element with the text "Click Me".
+    
+    <form action="/action_page.php">
+    <button>Click Me</button>
+    </form>
+    
+##### In the form below, add a input field that can only contain numbers
+Use the correct input attributes to only allow numbers between 1 and 5.
+
+    <form action="/action_page.php">
+    <input type="number" min="1" max="5">
+    </form>
+
+## HTML Form Attributes
+
+##### In the input field below, add placeholder that says "Your name here".
+    <form action="/action_page.php">
+    <input type="text" placeholder="Your name here">
+    </form>
+    
+##### Disable the input field below.
+    <form action="/action_page.php">
+    <input type="text" disabled>
+    </form>
+    
+##### Set the max numbers of characters allowed in the input field to 40.
+    <form action="/action_page.php">
+    <input type="text" maxlength="40">
+    </form>
+    
+##### Set the input field to be read only (meaning that the value cannot be changed).
+
+    <form action="/action_page.php">
+    <input type="text" readonly>
+    </form>
